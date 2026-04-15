@@ -6,13 +6,11 @@ namespace Player
     public class PlayerInput: MonoBehaviour
     {
         [SerializeField] private InputActionAsset playerControls;
+         
         private InputAction _moveAction;
-        private InputAction _pauseAction;
         private InputAction _attackAction;
         private InputAction _dodgeAction;
         private InputAction _jumpAction;
-        
-        private bool _paused;
         
         public Vector2 MoveVector { get; private set; }
         public bool Attacking { get; private set; }
@@ -39,15 +37,7 @@ namespace Player
             _jumpAction = playerControls.FindActionMap("Player").FindAction("Jump");
             _jumpAction.started += _ => Jump = true;
             _jumpAction.performed += _ => Jump = false;
-
-            _pauseAction = playerControls.FindActionMap("Player").FindAction("Pause");
-            _pauseAction.performed += _ =>
-            {
-                _paused = !_paused;
-                Cursor.lockState = _paused ? CursorLockMode.None : CursorLockMode.Locked;
-                Cursor.visible = _paused;
-                Time.timeScale = _paused ? 0f : 1f;
-            };
+            
         }
     }
 }

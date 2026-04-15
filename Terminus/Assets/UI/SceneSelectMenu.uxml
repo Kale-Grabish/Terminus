@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/SceneSelectMenu.uss?fileID=7433441132597879392&amp;guid=0a532c85e4e0f48328a14be572ebdf86&amp;type=3#SceneSelectMenu"/>
+    <ui:VisualElement name="menuUIRoot" class="MenuUI">
+        <ui:VisualElement name="" class="MenuPanel">
+            <ui:Label text="Terminus" class="MenuTitle"/>
+            <ui:GroupBox name="ButtonGroup" class="ButtonGroup"/>
+            <ui:Button text="Exit Game" name="ExitButton" class="ExitButton"/>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1;"/>
+    </ui:VisualElement>
+</ui:UXML>

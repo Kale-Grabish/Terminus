@@ -1,0 +1,71 @@
+:root {
+}
+
+#menuUIRoot.hideme {
+    left: -323px;
+    transition-property: left;
+    transition-duration: 0.5s;
+}
+
+#menuUIRoot.showme {
+    left: 0;
+    transition-property: left;
+    transition-duration: 0.5s;
+}
+
+.ButtonGroup {
+    margin-top: 2%;
+    margin-bottom: 5%;
+    flex-basis: auto;
+}
+
+.MenuPanel {
+    flex-grow: initial;
+    top: auto;
+    bottom: auto;
+    justify-content: space-between;
+    background-color: rgba(26, 26, 26, 0.61);
+    flex-wrap: wrap;
+    flex-shrink: initial;
+    flex-basis: auto;
+    padding: 20px 10px;
+    align-self: stretch;
+    align-items: center;
+    background-size: 1000px 100%;
+}
+
+.MenuTitle {
+    align-items: auto;
+    align-self: center;
+    font-size: 48px;
+    -unity-font-style: bold;
+    -unity-font-definition: resource("FlatSkin/Font/Roboto-Medium");
+    margin-top: 5%;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+.ExitButton {
+    margin-left: 12%;
+    margin-right: 12%;
+    -unity-text-auto-size: none;
+    align-self: center;
+    background-color: rgb(204, 0, 0);
+    color: rgb(255, 255, 255);
+    -unity-text-align: middle-center;
+}
+
+
+
+.MenuUI {
+    flex-grow: 1;
+    text-overflow: clip;
+    flex-direction: row;
+}
+
+Button {
+    -unity-font-style: bold;
+    -unity-text-align: middle-left;
+    -unity-text-auto-size: none;
+}
+
