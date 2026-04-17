@@ -1,4 +1,5 @@
 :root {
+
 }
 
 #menuUIRoot.hideme {
@@ -55,8 +56,6 @@
     -unity-text-align: middle-center;
 }
 
-
-
 .MenuUI {
     flex-grow: 1;
     text-overflow: clip;
@@ -68,4 +67,3 @@ Button {
     -unity-text-align: middle-left;
     -unity-text-auto-size: none;
 }
-

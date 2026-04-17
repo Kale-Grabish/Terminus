@@ -12,7 +12,6 @@ namespace UI
     {
         [Tooltip("List of scenes to show in menu.  Must also be in build properties scene list.")]
         [SerializeField] private List<string> scenes = new List<string>();
-        [SerializeField] private InputActionAsset playerControls;
         
         private InputAction _pauseAction;
         private bool _paused;
@@ -28,7 +27,8 @@ namespace UI
             _menuUIRoot.AddToClassList("hideme");
             _menuUIRoot.RemoveFromClassList("showme");
 
-            _pauseAction = playerControls.FindActionMap("Player").FindAction("Pause");
+            // use pause action to toggle menu
+            _pauseAction = InputSystem.actions.FindAction("Pause");
             _pauseAction.performed += _ =>
             {
                 _paused = !_paused;
@@ -36,10 +36,10 @@ namespace UI
                 Cursor.lockState = _paused ? CursorLockMode.None : CursorLockMode.Locked;
                 Cursor.visible = _paused;
                 Time.timeScale = _paused ? 0f : 1f;
+                
 
                 if (_paused)
                 {
-                    
                     _menuUIRoot.RemoveFromClassList("hideme");
                     _menuUIRoot.AddToClassList("showme");
                 }
@@ -53,8 +53,8 @@ namespace UI
         
         public void OnEnable()
         {
+            // create and add buttons for scenes
             GroupBox buttonGroup = _rootVe.Q<GroupBox>("ButtonGroup");
-            
             foreach (string scene in scenes)
             {
                 Button newButton = new Button();
