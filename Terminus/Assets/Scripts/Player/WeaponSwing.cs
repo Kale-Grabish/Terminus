@@ -8,20 +8,19 @@ public class WeaponSwing : MonoBehaviour
     InputAction attackAction;
     public GameObject Weapon;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    
+
+
     void Start()
     {
         attackAction = InputSystem.actions.FindAction("Attack");
-
+        attackAction.performed += _ => DoAttack();
     }
 
-    // Update is called once per frame
-    void Update()
+    void DoAttack()
     {
-        if(attackAction.IsPressed())
-        {
-            StartCoroutine(WeaponSwingAnimation());
-        }
+        StartCoroutine(WeaponSwingAnimation());
     }
     IEnumerator WeaponSwingAnimation()
     {

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 11671136073814140}
   - component: {fileID: 3288750928448386989}
   - component: {fileID: 7752497277317460184}
-  - component: {fileID: 7612430328064001902}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -127,30 +126,10 @@ MonoBehaviour:
   groundCheck: {fileID: 3124632486197979264}
   groundedRadius: 0.6
   canDash: 1
-  dashDistance: 20
   dashTimeRemaining: 0
+  dashDistance: 20
   dashTime: 0.25
   dashDirection: {x: 0, y: 0, z: 0}
---- !u!114 &7612430328064001902
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2864709409134697163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d6b137d4c520f147bdeaa8076ba2fb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Player.PlayerCombat
-  playerInput: {fileID: 3288750928448386989}
-  attackPoint: {fileID: 7241493612774536452}
-  attackRange: 0.5
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 256
-  attackDamage: 20
-  attackRate: 0.5
 --- !u!1 &2992380880993403615
 GameObject:
   m_ObjectHideFlags: 0

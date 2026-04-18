@@ -1,82 +1,86 @@
 using System.Collections;
 using System.Security.Cryptography;
 using System.Threading;
+using Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class WeaponBase : MonoBehaviour
 {
-    public float hitPoints = 10f;
-    public float minHP = 0f;
+    // placeholder until health system is implemented
+    public float hitPoints = 50f;
+    public float minHP = 1f;
+    public int attackDamage = 2;
     private float timer = 0.0f;
-    private float delayTime = 5.0f;
+    private float attackSpeed = 1.0f; //the lower the number set in this, the less time between weapon swings
     InputAction attackAction;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    CharacterController Player;
+
+
+
     void Start()
     {
         attackAction = InputSystem.actions.FindAction("Attack");
-       
-    }
-    
-    // Update is called once per frame
-    void Update()
-    {
-        
 
     }
 
-
-
-    private void OnCollisionStay(Collision collision)
+    private void OnTriggerStay(Collider other)
     {
+        // looks for game objects with the enemy tag. If found, runs weapon attack and weapon timer
+
         print("collision active");
-
-     
-        weaponAttack();
-
-        timer += Time.deltaTime;
-        if (timer < delayTime)
-        {
-            print("delay active");
-        }
-
-        if (timer > delayTime)
-        {
-            print("delay reset");
-            timer = 0.0f;
+         if (other.CompareTag("Enemy"))
+            {
+            weaponAttack();
+            weaponSpeed();
         }
     }
     
-    IEnumerator DelayAction(float delayTime)
-    {
-        //Wait for the specified delay time before continuing.
-        yield return new WaitForSeconds(delayTime);
-
-        //Do the action after the delay time has finished.
-      attackAction.Enable();
-    }
-
-    private void weaponAttack()
+    public void weaponAttack()
     
         {
+
+        
         if (attackAction.IsPressed())
         {
-            
-            print("weapon press");
+           
             print(hitPoints);
-            StartCoroutine(DelayAction(delayTime));
+
+            StartCoroutine(WeaponTimer(attackSpeed));
+           
             if (hitPoints > minHP)
             {
                 
-                hitPoints--;
-                if (timer < delayTime)
+                hitPoints = hitPoints - attackDamage;
+                if (timer < attackSpeed)
                 {
                     attackAction.Disable();
-                    print("attack disabled");
                 }
+            }
+            else
+            {
+                GameObject enemy = GameObject.FindWithTag("Enemy");
+                enemy.GetComponent<EnemyHealth>().Die();
             }
 
         }
     }
-  }
+
+    void weaponSpeed()
+    {
+        // timer for weapon swings
+        timer += Time.deltaTime;
+
+        if (timer > attackSpeed)
+        {
+            timer = 0.0f;
+        }
+    }
+    IEnumerator WeaponTimer(float attackSpeed)
+    {
+
+        yield return new WaitForSeconds(attackSpeed);
+        attackAction.Enable();
+    }
+
+}
