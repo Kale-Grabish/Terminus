@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
@@ -31,10 +30,8 @@ namespace UI
             _pauseAction = InputSystem.actions.FindAction("Pause");
             _closeAction = InputSystem.actions.FindAction("Cancel");
 
-            // SwitchToPlayerActions();
-                        
-            //ensure hidden by default
             _menuUIRoot = _rootVe.Q<VisualElement>("menuUIRoot");
+
             SetUpButtons();
             UpdateMenu();
         }
@@ -56,13 +53,11 @@ namespace UI
         
         private void ShowMenu(InputAction.CallbackContext context)
         {
-            Debug.Log("ShowMenu: "+context.action.name);
             ShowMenu();
         }
 
         private void HideMenu(InputAction.CallbackContext context)
         {
-            Debug.Log("HideMenu: "+context.action.name);
             HideMenu();
         }
 
@@ -124,8 +119,6 @@ namespace UI
         {
             HideMenu();
             SceneManager.LoadScene(sceneName);
-            
-            
         }
         
         private void ExitGame()

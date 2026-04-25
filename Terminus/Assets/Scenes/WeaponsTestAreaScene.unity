@@ -843,10 +843,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6579881143483601322, guid: 810c6eed664e65c85840300ec59be140, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7241493612774536452, guid: 810c6eed664e65c85840300ec59be140, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.48
@@ -873,9 +869,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2864709409134697163, guid: 810c6eed664e65c85840300ec59be140, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1093979983}
-    - targetCorrespondingSourceObject: {fileID: 2864709409134697163, guid: 810c6eed664e65c85840300ec59be140, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1093979984}
   m_SourcePrefab: {fileID: 100100000, guid: 810c6eed664e65c85840300ec59be140, type: 3}
 --- !u!4 &1093979976 stripped
 Transform:
@@ -900,27 +893,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCombat
   Weapon: {fileID: 5998883130505261584, guid: 90dfd27d24d638d4b996971af08aa8f4, type: 3}
---- !u!65 &1093979984
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 730746056}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 2.141816, z: 2.5184548}
-  m_Center: {x: 0, y: 0.57090795, z: 0.7592274}
 --- !u!1001 &1101408941
 PrefabInstance:
   m_ObjectHideFlags: 0
