@@ -28,7 +28,7 @@ public class WeaponBase : MonoBehaviour
     {
         // looks for game objects with the enemy tag. If found, runs weapon attack and weapon timer
 
-        print("collision active");
+        // print("collision active");
          if (other.CompareTag("Enemy"))
             {
             weaponAttack();

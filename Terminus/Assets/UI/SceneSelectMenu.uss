@@ -66,4 +66,13 @@ Button {
     -unity-font-style: bold;
     -unity-text-align: middle-left;
     -unity-text-auto-size: none;
+    padding-left: 25px;
+    border-width: 0px;
+    border-color: black;
+}
+
+Button:hover, Button:focus {
+    border-left-width: 20px;
+    padding-left: 5px;
+    
 }
