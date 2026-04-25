@@ -3,10 +3,17 @@ using UnityEngine;
 
 namespace Player
 {
-
+    public enum PainTypes
+    {
+        Hit,
+        HeadHurts
+    }
+    
     public class PlayerHealth : MonoBehaviour
     {
         private static readonly int IsDead = Animator.StringToHash("isDead");
+        private static readonly int GotHitTrigger = Animator.StringToHash("gotHit");
+        
         [SerializeField] private Animator animator;
 
         [SerializeField] private int maxHealth = 25;
@@ -42,13 +49,27 @@ namespace Player
             if (_currentHealth <= 0)
             {
                 animator.SetBool(IsDead, true);
-                GetComponentInChildren<SceneSelectorMenu>().ShowMenu();
+                GetComponentInChildren<SceneSelectorMenu>().ShowMenu(true);
             }
         }
 
-        public void TakeDamage(int amount)
+        public void TakeDamage(int amount, PainTypes painType=PainTypes.Hit)
         {
+            
             CurrentHealth -= amount;
+
+            if (_currentHealth <= 0) return;
+            
+            switch (painType)
+            {
+                case PainTypes.Hit:
+                {
+                    animator.SetTrigger(GotHitTrigger);
+                    break;
+                }
+            }
+            
+
         }
 
         public void Heal(int amount)
