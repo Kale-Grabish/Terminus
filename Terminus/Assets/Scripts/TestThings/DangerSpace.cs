@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Player;
 using UnityEngine;
 
-namespace Enemy
+namespace TestThings
 {
     public class DangerSpace : MonoBehaviour
     {
