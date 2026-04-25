@@ -1,25 +1,55 @@
 using UnityEngine;
 
-public class Health : MonoBehaviour
+namespace Player
 {
-    public int maxHealth = 25;
-        public int currentHealth;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class PlayerHealth : MonoBehaviour
     {
-        currentHealth = maxHealth;
-    }
+        [SerializeField] 
+        private int maxHealth = 25;
+        private int _currentHealth;
+        
+        private void Start()
+        {
+            CurrentHealth = maxHealth;
+        }
+        
+        public int MaxHealth
+        {
+            get => maxHealth;
+            set
+            {
+                maxHealth = value;
+                _currentHealth = Mathf.Clamp(value, 0, maxHealth);
+            }
+        }
 
-    void TakeDamage(int amount)
-    {
-        currentHealth -= amount;
-        if (currentHealth <= 0);
-            //game over or respawn
-    }
+        public int CurrentHealth
+        {
+            get => _currentHealth;
+            set
+            {
+                _currentHealth = Mathf.Clamp(value, 0, maxHealth);
+                DeathCheck();
+            }
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
+        private void DeathCheck()
+        {
+            if (_currentHealth <= 0)
+            {
+                //game over or respawn
+            }            
+        }
+        
+        public void TakeDamage(int amount)
+        {
+            CurrentHealth -= amount;
+        }
+        
+        public void Heal(int amount)
+        {
+            CurrentHealth += amount;
+        }
         
     }
 }
