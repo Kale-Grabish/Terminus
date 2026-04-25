@@ -17,7 +17,8 @@ namespace UI
         private InputAction _pauseAction;
         private InputAction _closeAction;
         private bool _paused;
-
+        private bool _locked; // stops the menu being hidden without selection
+        
         private VisualElement _rootVe;
         private VisualElement _menuUIRoot;
 
@@ -38,14 +39,17 @@ namespace UI
             UpdateMenu();
         }
 
-        public void ShowMenu()
+        public void ShowMenu(bool locked = false)
         {
+            _locked = locked;
             _paused = true;
             UpdateMenu();
         }
         
         private void HideMenu()
         {
+            if (_locked) return;
+            
             _paused = false;
             UpdateMenu();
         }
@@ -60,12 +64,6 @@ namespace UI
         {
             Debug.Log("HideMenu: "+context.action.name);
             HideMenu();
-        }
-
-        public void Toggle()
-        {
-            _paused = !_paused;
-            UpdateMenu();
         }
 
         private void SwitchToPlayerActions()
