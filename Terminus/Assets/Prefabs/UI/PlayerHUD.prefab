@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7401388395659812929
+--- !u!1 &4576208529766158388
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5353143116447363385}
-  - component: {fileID: 133368594087061525}
-  - component: {fileID: 138428822099853498}
+  - component: {fileID: 3792588653876565296}
+  - component: {fileID: 6154114240427271779}
+  - component: {fileID: 8399684424821425015}
   m_Layer: 5
-  m_Name: SceneSelectorMenu
+  m_Name: PlayerHUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5353143116447363385
+--- !u!4 &3792588653876565296
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7401388395659812929}
+  m_GameObject: {fileID: 4576208529766158388}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -33,13 +33,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &133368594087061525
+--- !u!114 &6154114240427271779
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7401388395659812929}
+  m_GameObject: {fileID: 4576208529766158388}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
@@ -47,8 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.UIElements.UIDocument
   m_PanelSettings: {fileID: 11400000, guid: bc15566ed5dff40ffbbf3659da4d2ac7, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: ad37023b7388443e99a7c0803ccca795, type: 3}
-  m_SortingOrder: 1
+  sourceAsset: {fileID: 9197481963319205126, guid: a9675c98be89948b8b74c6868d8fe7d6, type: 3}
+  m_SortingOrder: 0
   m_Position: 0
   m_WorldSpaceSizeMode: 1
   m_WorldSpaceWidth: 1920
@@ -56,18 +56,15 @@ MonoBehaviour:
   m_PivotReferenceSize: 0
   m_Pivot: 0
   m_WorldSpaceCollider: {fileID: 0}
---- !u!114 &138428822099853498
+--- !u!114 &8399684424821425015
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7401388395659812929}
+  m_GameObject: {fileID: 4576208529766158388}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4652b178062b443dfb70ad1339d3a3b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ac0d87e46012449688ebb5eab63afbc, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SceneSelectorMenu
-  scenes:
-  - TestScene
-  - WeaponsTestAreaScene
+  m_EditorClassIdentifier: '::'
