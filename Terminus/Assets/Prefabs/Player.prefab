@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1326747919864980137}
   serializedVersion: 2
   m_LocalRotation: {x: -0.0511573, y: 0.16805136, z: 0.008733193, w: 0.98441124}
-  m_LocalPosition: {x: -1.3051488, y: 1.5900075, z: -3.7112484}
+  m_LocalPosition: {x: -1.3051484, y: 4.7500076, z: -9.271249}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -203,9 +203,10 @@ GameObject:
   - component: {fileID: 7752497277317460184}
   - component: {fileID: 4460336656316309184}
   - component: {fileID: 2863537141453945082}
+  - component: {fileID: 6053983021282761048}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -327,6 +328,7 @@ MonoBehaviour:
   dodgeDirection: {x: 0, y: 0, z: 0}
   dodgeCooldown: 0.8
   dodgeGravityModifier: 0.2
+  isImmune: 0
 --- !u!114 &4460336656316309184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,6 +356,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.PlayerPower
   maxPower: 10
+--- !u!114 &6053983021282761048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2864709409134697163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bad07c4278856b1729c451b2bf74ee1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInventory
+  weapons:
+  - {fileID: 9047293730117411655, guid: c586aef6256e1bb4d9a2baff9d2d857c, type: 3}
+  - {fileID: 9047293730117411655, guid: c4ea33779594cc9dea2e00338dde3078, type: 3}
+  - {fileID: 1569107647947855470, guid: 5163592e14223d342801795d4636cb53, type: 3}
 --- !u!1 &2992380880993403615
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,7 +547,7 @@ MonoBehaviour:
     SplineCurvature: 0.5
   RecenteringTarget: 2
   HorizontalAxis:
-    Value: 19.375433
+    Value: 19.375427
     Center: 0
     Range: {x: -180, y: 180}
     Wrap: 1

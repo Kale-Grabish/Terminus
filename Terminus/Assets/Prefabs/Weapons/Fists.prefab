@@ -66,6 +66,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e620b6c7f89db140b3b4f8ff3a7f25f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponBase
-  hitPoints: 50
-  minHP: 1
   attackDamage: 5
+  weaponName: Fists
+  weaponType: 2
