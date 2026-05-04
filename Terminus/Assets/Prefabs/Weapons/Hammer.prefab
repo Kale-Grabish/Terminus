@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8516672288916287883}
   - component: {fileID: 9050543083692662536}
-  - component: {fileID: 9047293730117411655}
+  - component: {fileID: -1243387023413439020}
   m_Layer: 0
   m_Name: Hammer
   m_TagString: Weapon
@@ -26,14 +26,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 724372554084449786}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -0.231, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5166902329607446907}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!65 &9050543083692662536
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -53,9 +53,9 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.60370046, y: 0.39301467, z: 0.3907286}
-  m_Center: {x: -0.072541565, y: 1.4360251, z: -0.0069721937}
---- !u!114 &9047293730117411655
+  m_Size: {x: 0.5730691, y: 0.44528866, z: 0.5239161}
+  m_Center: {x: -0.021741018, y: 0.0021974146, z: 1.4466102}
+--- !u!114 &-1243387023413439020
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -64,9 +64,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 724372554084449786}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e620b6c7f89db140b3b4f8ff3a7f25f, type: 3}
+  m_Script: {fileID: 11500000, guid: 2361c19cefbe4e5f99e7b7c1d0da6143, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WeaponBase
+  m_EditorClassIdentifier: Assembly-CSharp::Weapons.HammerWeapon
   attackDamage: 20
   weaponName: Hammer
   weaponType: 1
@@ -96,11 +96,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 22ab6acc2cfdf8bea8b34752abb8d7fd, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 22ab6acc2cfdf8bea8b34752abb8d7fd, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 22ab6acc2cfdf8bea8b34752abb8d7fd, type: 3}
       propertyPath: m_LocalRotation.y
@@ -108,7 +108,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 22ab6acc2cfdf8bea8b34752abb8d7fd, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 22ab6acc2cfdf8bea8b34752abb8d7fd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

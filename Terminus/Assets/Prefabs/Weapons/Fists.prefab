@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7900741790445852084}
   - component: {fileID: 2547667628729617583}
-  - component: {fileID: 1569107647947855470}
+  - component: {fileID: 2673120621064451502}
   m_Layer: 0
   m_Name: Fists
   m_TagString: Weapon
@@ -54,7 +54,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.8458414, z: 1.1074333}
   m_Center: {x: 0, y: 5.0192943, z: 1.5392413}
---- !u!114 &1569107647947855470
+--- !u!114 &2673120621064451502
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -63,9 +63,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 939247097197656595}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e620b6c7f89db140b3b4f8ff3a7f25f, type: 3}
+  m_Script: {fileID: 11500000, guid: dabdc338487749418c86970d5dad5c18, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WeaponBase
+  m_EditorClassIdentifier: Assembly-CSharp::Weapons.FistsWeapon
   attackDamage: 5
   weaponName: Fists
   weaponType: 2

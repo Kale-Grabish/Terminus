@@ -33,5 +33,10 @@ namespace Weapons
             get => weaponType;
             private set => weaponType = value;
         }
+
+        public virtual void PositionInHands(GameObject rightHand, GameObject leftHand)
+        {
+
+        }
     }
 }
