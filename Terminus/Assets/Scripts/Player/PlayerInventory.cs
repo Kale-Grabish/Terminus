@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Weapons;
@@ -17,6 +15,7 @@ namespace Player
         
         private int _currentWeapon;
         private WeaponBase _activeWeaponInstance;
+        private bool _activelySwapping;
         
         private InputAction _nextWeaponAction;
         private InputAction _prevWeaponAction;
@@ -39,12 +38,16 @@ namespace Player
         
         private void NextWeapon()
         {
+            if (_activelySwapping) return;
+            _activelySwapping = true;
             _currentWeapon = (_currentWeapon == (weapons.Count-1)) ? 0 : _currentWeapon+1;
             DoAnimation();
         }
 
         private void PrevWeapon()
         {
+            if (_activelySwapping) return;
+            _activelySwapping = true;
             _currentWeapon = _currentWeapon == 0 ? weapons.Count-1 : _currentWeapon-1;
             DoAnimation();
         }
@@ -59,12 +62,10 @@ namespace Player
         
         public void EnableCurrentWeapon()
         {
+            _activelySwapping = false;
             if(_activeWeaponInstance?.gameObject != null) Destroy(_activeWeaponInstance.gameObject);
             _activeWeaponInstance = Instantiate(CurrentWeapon, rightHand.transform);
             _activeWeaponInstance.PositionInHands(rightHand, leftHand);
-            
-            
-
         }
         
     }
