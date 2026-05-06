@@ -1,5 +1,7 @@
 using UnityEngine;
-using UnityEngine.Serialization;
+using Enemy;
+using Interfaces;
+using Player;
 
 namespace Weapons
 {
@@ -12,10 +14,18 @@ namespace Weapons
     
     public class WeaponBase : MonoBehaviour
     {
-        [SerializeField] private int attackDamage = 2;
-        [SerializeField] private string weaponName = "unnamed";
-        [SerializeField] private WeaponTypeEnum weaponType;
-
+        [SerializeField] protected int attackDamage = 2;
+        [SerializeField] protected string weaponName = "unnamed";
+        [SerializeField] protected WeaponTypeEnum weaponType;
+        [SerializeField] protected PainTypes painType;
+        [SerializeField] protected float startDamageFrame;
+        [SerializeField] protected float endDamageFrame;
+        [SerializeField] protected BoxCollider damageArea;
+        [SerializeField] protected GameObject impactEffect;
+        
+        public float StartDamageFrame => startDamageFrame;
+        public float EndDamageFrame => endDamageFrame;
+        
         public int AttackDamage
         {
             get => attackDamage;
@@ -37,6 +47,37 @@ namespace Weapons
         public virtual void PositionInHands(GameObject rightHand, GameObject leftHand)
         {
 
+        }
+
+        public void Start()
+        {
+            damageArea.enabled = false;
+        }
+
+        public virtual void ActivateDamage(bool activate)
+        {
+            damageArea.enabled = activate;
+        }
+
+        protected virtual void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Damageable"))
+            {
+                other.GetComponent<IDamageable>().TakeDamage(attackDamage, painType);
+                if (impactEffect)
+                {
+                    Instantiate(impactEffect, transform.position, transform.rotation);
+                }
+            }
+        }
+
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.CompareTag("Damageable"))
+            {
+                Debug.Log("in: "+other.name);
+                
+            }
         }
     }
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8516672288916287883}
   - component: {fileID: 9050543083692662536}
   - component: {fileID: 9146257750408474057}
+  - component: {fileID: 5351711309788299772}
   m_Layer: 0
   m_Name: Mace
   m_TagString: Weapon
@@ -44,7 +45,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -53,8 +54,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.3210647, y: 1.1430646, z: 1.4041523}
-  m_Center: {x: -0.2270458, y: 0.5520003, z: 0.1312154}
+  m_Size: {x: 0.3, y: 1.26, z: 0.3}
+  m_Center: {x: 0, y: 0.25, z: 0}
 --- !u!114 &9146257750408474057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,6 +71,40 @@ MonoBehaviour:
   attackDamage: 10
   weaponName: Bar Mace
   weaponType: 0
+  painType: 0
+  startDamageFrame: 0.2
+  endDamageFrame: 0.4
+  damageArea: {fileID: 9050543083692662536}
+  impactEffect: {fileID: 6834177653421538552, guid: b2b6b5771a0dd8f4787401b5c621f05a, type: 3}
+  rightHandGrip: {fileID: 0}
+  leftHandGrip: {fileID: 0}
+--- !u!54 &5351711309788299772
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724372554084449786}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &2533204967548090829
 PrefabInstance:
   m_ObjectHideFlags: 0

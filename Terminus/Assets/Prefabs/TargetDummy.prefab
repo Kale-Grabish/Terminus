@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2972362075046252418}
   - component: {fileID: 6028955482141462873}
-  m_Layer: 0
+  - component: {fileID: 1887297197376973986}
+  m_Layer: 8
   m_Name: TargetDummy
-  m_TagString: Untagged
+  m_TagString: Damageable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,10 +53,22 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.41292578
-  m_Height: 1.5758227
+  m_Radius: 0.8929641
+  m_Height: 2.1382823
   m_Direction: 1
-  m_Center: {x: -0.0060346723, y: 0.71208864, z: 0.012069225}
+  m_Center: {x: 0, y: 1.1431918, z: 0}
+--- !u!114 &1887297197376973986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4734869813825898136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22e2d64f8573409ea4a9daea3f48e2c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy.TargetDummy
 --- !u!1001 &1135688725172943303
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -104,9 +117,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5781721828740473052, guid: 7a506dba9aa2449dba8f73341218b08f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -4819223349682164798, guid: 7a506dba9aa2449dba8f73341218b08f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -2511240423080479738, guid: 7a506dba9aa2449dba8f73341218b08f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -2214671780200814635, guid: 7a506dba9aa2449dba8f73341218b08f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7a506dba9aa2449dba8f73341218b08f, type: 3}
       propertyPath: m_Name
       value: M_target dummy
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a506dba9aa2449dba8f73341218b08f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9201891414359770288, guid: 7a506dba9aa2449dba8f73341218b08f, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

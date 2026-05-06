@@ -14,6 +14,8 @@ namespace Player
     public class PlayerMovement : MonoBehaviour
     {
         private PlayerMovementStates _currentMovementState = PlayerMovementStates.Idle;
+        public PlayerMovementStates CurrentMovementState => _currentMovementState;
+        
         private static readonly int Speed = Animator.StringToHash("Speed");
         private static readonly int IsFalling = Animator.StringToHash("isFalling");
         private static readonly int IsDodging = Animator.StringToHash("isDodging");

@@ -8,13 +8,10 @@ namespace Player
         [SerializeField] private InputActionAsset playerControls;
          
         private InputAction _moveAction;
-        private InputAction _attackAction;
         private InputAction _dodgeAction;
         
         public Vector2 MoveVector { get; private set; }
-        public bool Attacking { get; private set; }
         public bool Dodge { get; private set; }
-        public bool Jump {  get; private set; } 
 
         private void Awake()
         {
@@ -24,11 +21,7 @@ namespace Player
             _moveAction = playerControls.FindActionMap("Player").FindAction("Move");
             _moveAction.performed += ctx => MoveVector = ctx.ReadValue<Vector2>();
             _moveAction.canceled += _ => MoveVector = Vector2.zero;
-
-            _attackAction = playerControls.FindActionMap("Player").FindAction("Attack");
-            _attackAction.performed += _ => Attacking = true;
-            _attackAction.canceled += _ => Attacking = false;
-
+            
             _dodgeAction = playerControls.FindActionMap("Player").FindAction("Dodge");
             _dodgeAction.started += _ => Dodge = true;
             _dodgeAction.canceled += _ => Dodge = false;

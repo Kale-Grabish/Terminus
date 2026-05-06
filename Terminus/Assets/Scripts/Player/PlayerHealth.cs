@@ -1,3 +1,4 @@
+using Interfaces;
 using UI;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ namespace Player
         HeadHurts
     }
 
-    public class PlayerHealth : MonoBehaviour
+    public class PlayerHealth : MonoBehaviour, IDamageable
     {
         private static readonly int IsDead = Animator.StringToHash("isDead");
         private static readonly int GotHitTrigger = Animator.StringToHash("gotHit");

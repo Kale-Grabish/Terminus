@@ -1,24 +1,35 @@
+using Interfaces;
+using Player;
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour
+namespace Enemy
 {
-
-    public float hitPoints = 10f;
-    public float minHP = 0f;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class EnemyHealth : MonoBehaviour, IDamageable
     {
+
+        [SerializeField] public int maxHealth;
+        private int _currentHealth;
         
-    }
+        private void Start()
+        {
+            InitHealth();
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
+        private void InitHealth()
+        {
+            _currentHealth = maxHealth;
+        }
+
+        public void TakeDamage(int damage, PainTypes painType = PainTypes.Hit)
+        {
+            _currentHealth -= damage;
+            if (_currentHealth <= 0)Die();
+        }
+    
+        private void Die()
+        {
+            Destroy(gameObject);
+        }
         
-    }
-
-    public void Die()
-    {
-        Destroy(gameObject);
     }
 }
