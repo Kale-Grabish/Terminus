@@ -70,14 +70,6 @@ namespace Weapons
                 }
             }
         }
-
-        private void OnTriggerStay(Collider other)
-        {
-            if (other.CompareTag("Damageable"))
-            {
-                Debug.Log("in: "+other.name);
-                
-            }
-        }
+        
     }
 }

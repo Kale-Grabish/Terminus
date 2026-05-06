@@ -15,7 +15,7 @@ namespace Player
         private static readonly int IsDead = Animator.StringToHash("isDead");
         private static readonly int GotHitTrigger = Animator.StringToHash("gotHit");
 
-        private PlayerMovement playerMovement;
+        private PlayerMovement _playerMovement;
 
         [SerializeField] private Animator animator;
 
@@ -23,21 +23,16 @@ namespace Player
         private int _currentHealth;
 
         private bool IsImmune()
-        { return playerMovement.isImmune; }
+        { return _playerMovement.isImmune; }
 
         private void Awake()
         {
-            playerMovement = GetComponent<PlayerMovement>();
+            _playerMovement = GetComponent<PlayerMovement>();
         }
 
         private void Start()
         {
             CurrentHealth = maxHealth;
-        }
-
-        private void Update()
-        {
-
         }
 
         public int MaxHealth
