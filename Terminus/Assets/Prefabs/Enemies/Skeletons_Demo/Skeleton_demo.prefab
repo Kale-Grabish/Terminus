@@ -255,7 +255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BasicSkeletonEnemy
   navMeshAgent: {fileID: 2275472212251353218}
-  _animator: {fileID: 6986822474418067972}
+  animator: {fileID: 6986822474418067972}
   _target: {fileID: 0}
   defaultState: 0
   maxHealth: 50
@@ -336,7 +336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35850b0cc31a43c5bc2f58daa4a4acba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy.PlayerProximityDetectorSensor
-  range: 1
+  range: 2
 --- !u!95 &6986822474418067972 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 76796d66bfb0344cf893c414e2fcdc37, type: 3}
