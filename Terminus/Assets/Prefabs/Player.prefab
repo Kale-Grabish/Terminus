@@ -947,6 +947,14 @@ PrefabInstance:
       propertyPath: playerControls
       value: 
       objectReference: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    - target: {fileID: 138428822099853498, guid: 52589ad2992bb456eabd5a01eeb78c2c, type: 3}
+      propertyPath: scenes.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 138428822099853498, guid: 52589ad2992bb456eabd5a01eeb78c2c, type: 3}
+      propertyPath: 'scenes.Array.data[2]'
+      value: EnemyTestAreaScene
+      objectReference: {fileID: 0}
     - target: {fileID: 5353143116447363385, guid: 52589ad2992bb456eabd5a01eeb78c2c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.08969
