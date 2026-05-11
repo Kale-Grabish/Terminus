@@ -86,6 +86,11 @@ namespace Player
             }
         }
 
+        public bool IsAlive()
+        {
+            return  CurrentHealth > 0;
+        }
+
 
         public void Heal(int amount)
         {

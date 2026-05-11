@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1326747919864980137}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.140304, y: -0.8182188, z: 0.22506233, w: 0.51007813}
-  m_LocalPosition: {x: 2.9176495, y: 3.9339867, z: 1.430675}
+  m_LocalRotation: {x: 0.07579703, y: 0.8555639, z: -0.13098635, w: 0.49508366}
+  m_LocalPosition: {x: -3.2227192, y: 3.1654768, z: 1.8521869}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -344,7 +344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.PlayerHealth
   animator: {fileID: 6675716913217650273}
-  maxHealth: 25
+  maxHealth: 50
 --- !u!114 &2863537141453945082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -483,8 +483,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8375993174562836139}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14030403, y: -0.8182188, z: 0.22506233, w: 0.5100782}
-  m_LocalPosition: {x: 2.9176495, y: 3.9339867, z: 1.430675}
+  m_LocalRotation: {x: 0.07579704, y: 0.8555639, z: -0.13098633, w: 0.4950837}
+  m_LocalPosition: {x: -3.2227192, y: 3.1654768, z: 1.8521869}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -567,7 +567,7 @@ MonoBehaviour:
     SplineCurvature: 0.5
   RecenteringTarget: 2
   HorizontalAxis:
-    Value: -116.12111
+    Value: 119.88719
     Center: 0
     Range: {x: -180, y: 180}
     Wrap: 1
@@ -577,7 +577,7 @@ MonoBehaviour:
       Time: 2
     Restrictions: 0
   VerticalAxis:
-    Value: 31.160658
+    Value: 24.88432
     Center: 17.5
     Range: {x: -10, y: 45}
     Wrap: 0
@@ -947,6 +947,14 @@ PrefabInstance:
       propertyPath: playerControls
       value: 
       objectReference: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    - target: {fileID: 138428822099853498, guid: 52589ad2992bb456eabd5a01eeb78c2c, type: 3}
+      propertyPath: scenes.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 138428822099853498, guid: 52589ad2992bb456eabd5a01eeb78c2c, type: 3}
+      propertyPath: 'scenes.Array.data[2]'
+      value: EnemyTestAreaScene
+      objectReference: {fileID: 0}
     - target: {fileID: 5353143116447363385, guid: 52589ad2992bb456eabd5a01eeb78c2c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.08969

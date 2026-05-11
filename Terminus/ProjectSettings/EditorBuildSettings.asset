@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WeaponsTestAreaScene.unity
     guid: 778108d13a2b3420f8ed41d6fbd8f187
+  - enabled: 1
+    path: Assets/Scenes/EnemyTestAreaScene.unity
+    guid: d7c0351080b2a42eb997294ee1040973
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Interfaces;
 using Player;
 using UnityEngine;
 
@@ -18,7 +19,8 @@ namespace TestThings
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("Player"))
+            Debug.Log(other.gameObject.name);
+            if (other.gameObject.CompareTag("Damageable") || other.gameObject.CompareTag("Player"))
             {
                 _targets.Add(other.gameObject);
             }
@@ -38,7 +40,7 @@ namespace TestThings
                 _timeSinceZap = 0;
                 _targets.ForEach(delegate(GameObject target)
                 {
-                    target?.GetComponent<PlayerHealth>()?.TakeDamage(damagePerSecond);
+                    target?.GetComponent<IDamageable>()?.TakeDamage(damagePerSecond);
                 });
             
             }
