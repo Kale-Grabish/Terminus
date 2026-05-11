@@ -3,146 +3,172 @@ using Interfaces;
 using Player;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Serialization;
 
-enum EnemyState
+namespace Enemy
 {
-    IDLE,
-    CHASE,
-    ATTACKING,
-    DEAD,
-    SEARCHING
-}
-
-public class BasicSkeletonEnemy : MonoBehaviour, IDamageable
-{
-    [SerializeField] private NavMeshAgent navMeshAgent;
-    [SerializeField] private Animator animator;
-    [SerializeField] private GameObject _target;
-    [SerializeField] private EnemyState defaultState = EnemyState.IDLE;
-    [SerializeField] private int maxHealth = 50;
-    [SerializeField] private VisionSensor  visionSensor;
-    [SerializeField] private PlayerProximityDetectorSensor playerProximityDetectorSensor;
-    
-    private int _currentHealth;
-    private float turnSpeed = 3.0f;
-    private EnemyState _currentState;
-    private bool _isActive;
-    
-    private void Start()
+    enum EnemyState
     {
-        _currentState = defaultState;
-        _currentHealth = maxHealth;
+        Idle,
+        Chase,
+        Attacking,
+        Dead,
+        Searching,
+        Cheering
     }
-    
-    private void Update()
+
+    public class BasicSkeletonEnemy : MonoBehaviour, IDamageable
     {
-        switch (_currentState)
+        [SerializeField] private NavMeshAgent navMeshAgent;
+        [SerializeField] private Animator animator;
+        [SerializeField] private GameObject _target;
+        [SerializeField] private EnemyState defaultState = EnemyState.Idle;
+        [SerializeField] private int maxHealth = 50;
+        [SerializeField] private VisionSensor  visionSensor;
+        [SerializeField] private PlayerProximityDetectorSensor playerProximityDetectorSensor;
+        
+        private int _currentHealth;
+        private float turnSpeed = 3.0f;
+        private EnemyState _currentState;
+        private bool _isActive;
+    
+        private void Start()
         {
-            case EnemyState.IDLE: DoIdle(); break;
-            case EnemyState.CHASE:  DoChase(); break;
-            case EnemyState.ATTACKING: DoAttacking(); break;
-            case EnemyState.DEAD: DoDeath(); break;
-            case EnemyState.SEARCHING: DoSearch(); break;
-            default: DoIdle(); break;
+            _currentState = defaultState;
+            _currentHealth = maxHealth;
         }
-    }
-
-    private bool CanSeePlayer()
-    {
-        return visionSensor.VisibleObjects.Exists(go => go.CompareTag("Player"));
-    }
     
-    private bool AmNextToTarget()
-    {
-        if (!navMeshAgent.isStopped)
+        private void Update()
         {
-            return navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance;
+            switch (_currentState)
+            {
+                case EnemyState.Idle: DoIdle(); break;
+                case EnemyState.Chase:  DoChase(); break;
+                case EnemyState.Attacking: DoAttacking(); break;
+                case EnemyState.Dead: DoDeath(); break;
+                case EnemyState.Searching: DoSearch(); break;
+                case EnemyState.Cheering: DoCheer(); break;
+                default: DoIdle(); break;
+            }
         }
-        return playerProximityDetectorSensor.NearPlayer;
-    }
 
-    private void DoIdle()
-    {
-        animator.SetFloat("Speed", 0);
-        navMeshAgent.isStopped = true;
-
-        if (CanSeePlayer())
+        private bool CanSeePlayer()
         {
-            FacePlayer();
+            return visionSensor.VisibleObjects.Exists(go => go.CompareTag("Player"));
         }
         
-        if (CanSeePlayer() && !AmNextToTarget())
+        private bool AmNextToTarget()
         {
-            _currentState = EnemyState.CHASE;
+            if (!navMeshAgent.isStopped)
+            {
+                return navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance;
+            }
+            return playerProximityDetectorSensor.NearPlayer;
         }
-        
-        if (CanSeePlayer() && AmNextToTarget())
-        {
-            _currentState = EnemyState.ATTACKING;
-        }
-        
-    }
 
-    private void DoChase()
-    {
-        animator.SetFloat("Speed", 0.5f);
-        navMeshAgent.SetDestination(_target.gameObject.transform.position);
-        navMeshAgent.isStopped = false;
-        
-        if (CanSeePlayer() && AmNextToTarget())
+        private void DoIdle()
         {
-            _currentState = EnemyState.ATTACKING;
-        }
-    }
+            animator.SetFloat("Speed", 0);
+            navMeshAgent.isStopped = true;
 
-    
-    
-    private void DoAttacking()
-    {
-        navMeshAgent.isStopped = true;
-        animator.SetFloat("Speed", 0.0f);
-        FacePlayer();
-        
-        if (!AmNextToTarget())
-        {
-            _currentState = EnemyState.CHASE;
-            return;
-        }
-        animator.SetTrigger("DoAttack");
-    }
-
-    private void DoSearch()
-    {
-        
-    }
-    
-    private void DoDeath()
-    {
-        navMeshAgent.isStopped = true;
-        animator.SetBool("IsDead", true);
-    }
-    
-    public void TakeDamage(int amount, PainTypes painType = PainTypes.Hit)
-    {
-        _currentHealth -= amount;
-        if (_currentHealth <= 0)
-        {
-            _currentState = EnemyState.DEAD;
-            return;
-        }
-        animator.SetTrigger("Hit");
-    }
-
-    private void FacePlayer()
-    {
-        GameObject player = visionSensor.VisibleObjects.Find(go => go.CompareTag("Player"));
-        if (!player) return;
+            if (CanSeePlayer())
+            {
+                FacePlayer();
+            }
             
-        // determine vector to the player
-        var vectorToPlayer = player.transform.position - transform.position;
-        // rotate towards
-        Vector3 newDirection = Vector3.RotateTowards(transform.forward, vectorToPlayer, Time.fixedDeltaTime/turnSpeed, 0.0f);
-        transform.rotation = Quaternion.LookRotation(newDirection);
+            if (CanSeePlayer() && !AmNextToTarget())
+            {
+                _currentState = EnemyState.Chase;
+            }
+            
+            if (CanSeePlayer() && AmNextToTarget())
+            {
+                _currentState = EnemyState.Attacking;
+            }
+
+            CheckForPlayerDeath();
+        }
+
+        private void CheckForPlayerDeath()
+        {
+            if (!_target.GetComponent<IDamageable>().IsAlive())
+            {
+                _currentState = EnemyState.Cheering;
+            }
+        }
+        
+        private void DoChase()
+        {
+            animator.SetFloat("Speed", 0.5f);
+            navMeshAgent.SetDestination(_target.gameObject.transform.position);
+            navMeshAgent.isStopped = false;
+            
+            if (CanSeePlayer() && AmNextToTarget())
+            {
+                _currentState = EnemyState.Attacking;
+            }
+            CheckForPlayerDeath();
+        }
+        
+        private void DoAttacking()
+        {
+            navMeshAgent.isStopped = true;
+            animator.SetFloat("Speed", 0.0f);
+            FacePlayer();
+            
+            if (!AmNextToTarget())
+            {
+                _currentState = EnemyState.Chase;
+                return;
+            }
+            animator.SetTrigger("DoAttack");
+            CheckForPlayerDeath();
+        }
+
+        private void DoSearch()
+        {
+            
+        }
+        
+        private void DoDeath()
+        {
+            navMeshAgent.isStopped = true;
+            animator.SetBool("IsDead", true);
+        }
+
+        private void DoCheer()
+        {
+            navMeshAgent.isStopped = true;
+            animator.SetFloat("Speed", 0.0f);
+            animator.SetBool("IsCheering", true);
+        }
+        
+        public void TakeDamage(int amount, PainTypes painType = PainTypes.Hit)
+        {
+            _currentHealth -= amount;
+            if (_currentHealth <= 0)
+            {
+                _currentState = EnemyState.Dead;
+                return;
+            }
+            animator.SetTrigger("Hit");
+            _currentState = EnemyState.Chase;
+        }
+
+        public bool IsAlive()
+        {
+            return _currentHealth > 0;
+        }
+
+        private void FacePlayer()
+        {
+            GameObject player = visionSensor.VisibleObjects.Find(go => go.CompareTag("Player"));
+            if (!player) return;
+                
+            // determine vector to the player
+            var vectorToPlayer = player.transform.position - transform.position;
+            // rotate towards
+            Vector3 newDirection = Vector3.RotateTowards(transform.forward, vectorToPlayer, Time.fixedDeltaTime/turnSpeed, 0.0f);
+            transform.rotation = Quaternion.LookRotation(newDirection);
+        }
     }
 }

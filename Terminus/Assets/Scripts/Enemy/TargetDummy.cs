@@ -15,8 +15,10 @@ namespace Enemy
                 animator.SetTrigger("GotHit");
             }
         }
-    
-        
-        
+
+        public bool IsAlive()
+        {
+            return true;
+        }
     }
 }
