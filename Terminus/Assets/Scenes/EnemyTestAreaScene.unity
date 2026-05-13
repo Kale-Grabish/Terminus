@@ -768,10 +768,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1714082638611704711, guid: 83ed49c36ab5848a19eeb9ed9cd738ac, type: 3}
-      propertyPath: _target
-      value: 
-      objectReference: {fileID: 1181904260}
     - target: {fileID: 3897305625634947198, guid: 83ed49c36ab5848a19eeb9ed9cd738ac, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.48
@@ -815,10 +811,6 @@ PrefabInstance:
     - target: {fileID: 4421921846944471748, guid: 83ed49c36ab5848a19eeb9ed9cd738ac, type: 3}
       propertyPath: m_Name
       value: Skeleton_demo
-      objectReference: {fileID: 0}
-    - target: {fileID: 4421921846944471748, guid: 83ed49c36ab5848a19eeb9ed9cd738ac, type: 3}
-      propertyPath: m_TagString
-      value: Damageable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -902,11 +894,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 810c6eed664e65c85840300ec59be140, type: 3}
---- !u!1 &1181904260 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2864709409134697163, guid: 810c6eed664e65c85840300ec59be140, type: 3}
-  m_PrefabInstance: {fileID: 1093979975}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1210671146
 GameObject:
   m_ObjectHideFlags: 0

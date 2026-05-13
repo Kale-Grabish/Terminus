@@ -52,8 +52,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1.2362481}
+  m_Center: {x: 0.0000000030235237, y: 0.00000009011616, z: 0.11812068}
 --- !u!114 &2512592750065737139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,6 +69,9 @@ MonoBehaviour:
   attackDamage: 10
   impactEffect: {fileID: 6834177653421538552, guid: b2b6b5771a0dd8f4787401b5c621f05a, type: 3}
   painType: 0
+  startDamageFrame: 0.3
+  endDamageFrame: 0.5
+  wielder: {fileID: 1714082638611704711}
 --- !u!1001 &3574938552366475157
 PrefabInstance:
   m_ObjectHideFlags: 0
