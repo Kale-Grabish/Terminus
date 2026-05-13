@@ -25,16 +25,17 @@ namespace Enemy
         [SerializeField] private int maxHealth = 50;
         [SerializeField] private VisionSensor  visionSensor;
         [SerializeField] private PlayerProximityDetectorSensor playerProximityDetectorSensor;
-        
+        private EnemyWeapon _weapon;
         private int _currentHealth;
         private float turnSpeed = 3.0f;
         private EnemyState _currentState;
         private bool _isActive;
-    
+        
         private void Start()
         {
             _currentState = defaultState;
             _currentHealth = maxHealth;
+            _weapon = GetComponentInChildren<EnemyWeapon>();
         }
     
         private void Update()
@@ -47,6 +48,7 @@ namespace Enemy
                 case EnemyState.Dead: DoDeath(); break;
                 case EnemyState.Searching: DoSearch(); break;
                 case EnemyState.Cheering: DoCheer(); break;
+
                 default: DoIdle(); break;
             }
         }
@@ -153,6 +155,8 @@ namespace Enemy
                 _currentState = EnemyState.Dead;
                 return true;
             }
+
+            _weapon.DamageActive = false;
             animator.SetTrigger("Hit");
             _currentState = EnemyState.Chase;
             return true;
