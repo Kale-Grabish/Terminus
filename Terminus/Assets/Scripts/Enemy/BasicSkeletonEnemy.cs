@@ -142,16 +142,20 @@ namespace Enemy
             animator.SetBool("IsCheering", true);
         }
         
-        public void TakeDamage(int amount, PainTypes painType = PainTypes.Hit)
+        public bool TakeDamage(int amount, PainTypes painType = PainTypes.Hit)
         {
+            //if already dead: bail 
+            if (!IsAlive()) return false;
+            
             _currentHealth -= amount;
             if (_currentHealth <= 0)
             {
                 _currentState = EnemyState.Dead;
-                return;
+                return true;
             }
             animator.SetTrigger("Hit");
             _currentState = EnemyState.Chase;
+            return true;
         }
 
         public bool IsAlive()

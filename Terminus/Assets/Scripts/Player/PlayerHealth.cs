@@ -48,7 +48,7 @@ namespace Player
         public int CurrentHealth
         {
             get => _currentHealth;
-            set
+            private set
             {
                 _currentHealth = Mathf.Clamp(value, 0, maxHealth);
                 DeathCheck();
@@ -64,16 +64,16 @@ namespace Player
             }
         }
 
-        public void TakeDamage(int amount, PainTypes painType = PainTypes.Hit)
+        public bool TakeDamage(int amount, PainTypes painType = PainTypes.Hit)
         {
             // bail if immune
-            if (IsImmune()) return;
+            if (IsImmune()) return false;
 
             // apply damage
             CurrentHealth -= amount;
 
             // bail if now dead
-            if (_currentHealth <= 0) return;
+            if (_currentHealth <= 0) return true;
 
             // otherwise play appropriate animation
             switch (painType)
@@ -84,6 +84,8 @@ namespace Player
                         break;
                     }
             }
+
+            return true;
         }
 
         public bool IsAlive()

@@ -63,8 +63,8 @@ namespace Weapons
         {
             if (other.CompareTag("Damageable"))
             {
-                other.GetComponent<IDamageable>().TakeDamage(attackDamage, painType);
-                if (impactEffect)
+                bool didHurt = other.GetComponent<IDamageable>().TakeDamage(attackDamage, painType);
+                if (didHurt && impactEffect)
                 {
                     Instantiate(impactEffect, transform.position, transform.rotation);
                 }

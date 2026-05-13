@@ -14,8 +14,12 @@ namespace Enemy
         {
             Debug.Log("hit");
             if (!other.CompareTag("Damageable") && !other.CompareTag("Player")) return;
-            other.GetComponent<IDamageable>().TakeDamage(attackDamage, painType);
-            if (!impactEffect) return;
+
+            // try to inflict damage
+            bool didHurt = other.GetComponent<IDamageable>().TakeDamage(attackDamage, painType);
+
+            // if damage was inflicted & we have impact FX then instantiate it
+            if (didHurt && !impactEffect) return;
             Instantiate(impactEffect, transform.position, transform.rotation);
         }
     }
