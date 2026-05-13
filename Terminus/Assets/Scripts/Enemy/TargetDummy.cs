@@ -8,12 +8,13 @@ namespace Enemy
     {
         [SerializeField] private Animator animator;
         
-        public void TakeDamage(int damage, PainTypes painType = PainTypes.Hit)
+        public bool TakeDamage(int damage, PainTypes painType = PainTypes.Hit)
         {
-            if (animator != null)
+            if (animator)
             {
                 animator.SetTrigger("GotHit");
             }
+            return true;
         }
 
         public bool IsAlive()
