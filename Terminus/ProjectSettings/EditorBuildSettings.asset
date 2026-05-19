@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EnemyTestAreaScene.unity
     guid: d7c0351080b2a42eb997294ee1040973
+  - enabled: 1
+    path: Assets/Scenes/CatacombsGreybox.unity
+    guid: 975df11a4c2a63041b674bd2095ce79c
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

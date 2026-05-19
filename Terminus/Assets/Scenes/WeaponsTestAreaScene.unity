@@ -754,19 +754,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3065246889700166430, guid: 810c6eed664e65c85840300ec59be140, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.9176495
+      value: -3.2227192
       objectReference: {fileID: 0}
     - target: {fileID: 3065246889700166430, guid: 810c6eed664e65c85840300ec59be140, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.9339864
+      value: 3.1654766
       objectReference: {fileID: 0}
     - target: {fileID: 3065246889700166430, guid: 810c6eed664e65c85840300ec59be140, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.430675
+      value: 1.8521869
       objectReference: {fileID: 0}
     - target: {fileID: 4978056876480863627, guid: 810c6eed664e65c85840300ec59be140, type: 3}
       propertyPath: m_Data.m_Target
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8150803867699325464, guid: 810c6eed664e65c85840300ec59be140, type: 3}
+      propertyPath: scenes.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8150803867699325464, guid: 810c6eed664e65c85840300ec59be140, type: 3}
+      propertyPath: 'scenes.Array.data[3]'
+      value: EnemyTestAreaScene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
