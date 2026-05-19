@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1326747919864980137}
   serializedVersion: 2
   m_LocalRotation: {x: 0.07579703, y: 0.8555639, z: -0.13098635, w: 0.49508366}
-  m_LocalPosition: {x: -3.2227192, y: 3.1654768, z: 1.8521869}
+  m_LocalPosition: {x: -3.2227192, y: 6.3254766, z: -3.707813}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -949,11 +949,15 @@ PrefabInstance:
       objectReference: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     - target: {fileID: 138428822099853498, guid: 52589ad2992bb456eabd5a01eeb78c2c, type: 3}
       propertyPath: scenes.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 138428822099853498, guid: 52589ad2992bb456eabd5a01eeb78c2c, type: 3}
       propertyPath: 'scenes.Array.data[2]'
       value: EnemyTestAreaScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 138428822099853498, guid: 52589ad2992bb456eabd5a01eeb78c2c, type: 3}
+      propertyPath: 'scenes.Array.data[3]'
+      value: CatacombsGreybox
       objectReference: {fileID: 0}
     - target: {fileID: 5353143116447363385, guid: 52589ad2992bb456eabd5a01eeb78c2c, type: 3}
       propertyPath: m_LocalPosition.x

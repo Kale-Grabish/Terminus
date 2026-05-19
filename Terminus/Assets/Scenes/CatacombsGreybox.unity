@@ -1551,14 +1551,6 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.13098632
       objectReference: {fileID: 0}
-    - target: {fileID: 8150803867699325464, guid: 810c6eed664e65c85840300ec59be140, type: 3}
-      propertyPath: scenes.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8150803867699325464, guid: 810c6eed664e65c85840300ec59be140, type: 3}
-      propertyPath: 'scenes.Array.data[3]'
-      value: CatacombsGreybox
-      objectReference: {fileID: 0}
     - target: {fileID: 8820598546359447089, guid: 810c6eed664e65c85840300ec59be140, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.49508366

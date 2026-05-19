@@ -1191,14 +1191,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 1.8521862
       objectReference: {fileID: 0}
-    - target: {fileID: 8150803867699325464, guid: 810c6eed664e65c85840300ec59be140, type: 3}
-      propertyPath: scenes.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8150803867699325464, guid: 810c6eed664e65c85840300ec59be140, type: 3}
-      propertyPath: 'scenes.Array.data[3]'
-      value: CatacombsGreybox
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
