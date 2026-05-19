@@ -9,9 +9,11 @@ namespace Player
          
         private InputAction _moveAction;
         private InputAction _dodgeAction;
+        private InputAction _throwAction;
         
         public Vector2 MoveVector { get; private set; }
         public bool Dodge { get; private set; }
+        public bool Throw { get; private set; }
 
         private void Awake()
         {
@@ -25,6 +27,10 @@ namespace Player
             _dodgeAction = playerControls.FindActionMap("Player").FindAction("Dodge");
             _dodgeAction.started += _ => Dodge = true;
             _dodgeAction.canceled += _ => Dodge = false;
+
+            _throwAction = playerControls.FindActionMap("Player").FindAction("Throw");
+            _throwAction.started += _ => Throw = true;
+            _throwAction.canceled += _ => Throw = false;
         }
     }
 }
