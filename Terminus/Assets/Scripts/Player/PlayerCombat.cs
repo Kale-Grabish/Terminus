@@ -7,37 +7,41 @@ namespace Player
     public class PlayerCombat : MonoBehaviour
     {
         private InputAction _attackAction;
-        [SerializeField] private PlayerMovement playerMovement;
-        [SerializeField] private PlayerInventory playerInventory;
+        private PlayerMovement _playerMovement;
+        private PlayerInventory _playerInventory;
 
-        [SerializeField] private Animator animator;
+        private Animator _animator;
         public bool Attacking { get; set; }
-        public WeaponBase CurrentWeapon => playerInventory.CurrentWeapon; 
+        public WeaponBase CurrentWeapon => _playerInventory.CurrentWeapon; 
         
         
         private void Awake()
         {
             _attackAction = InputSystem.actions.FindAction("Attack");
+            _animator = GetComponent<Animator>();
+            _playerMovement = GetComponent<PlayerMovement>();
+            _playerInventory = GetComponent<PlayerInventory>();
+            
             _attackAction.performed += _ => StartAttack();
         }
 
         private bool CanAttack()
         {
-            return !Attacking && playerMovement.CurrentMovementState != PlayerMovementStates.Dodge;
+            return !Attacking && _playerMovement.CurrentMovementState != PlayerMovementStates.Dodge;
         }
         
         public void ActivateDamage(bool activate)
         {
-            playerInventory.CurrentWeapon.ActivateDamage(activate);            
+            _playerInventory.CurrentWeapon.ActivateDamage(activate);            
         }
         
         private void StartAttack()
         {
             if (!CanAttack()) return;
             Attacking = true;
-            if (animator != null)
+            if (_animator != null)
             {
-                animator.SetTrigger("MakeMeleeAttack");
+                _animator.SetTrigger("MakeMeleeAttack");
             }
         }
     }

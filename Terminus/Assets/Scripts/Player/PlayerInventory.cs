@@ -7,14 +7,13 @@ namespace Player
 {
     public class PlayerInventory : MonoBehaviour
     {
-        [SerializeField] private Animator animator;
-        [SerializeField] private PlayerCombat playerCombat;
+        private Animator _animator;
+        private PlayerCombat _playerCombat;
         [SerializeField] private List<WeaponBase> weapons;
         [SerializeField] private GameObject rightHand;
         [SerializeField] private GameObject leftHand;
         
         private int _currentWeapon;
-        private WeaponBase _activeWeaponInstance;
         private bool _activelySwapping;
         
         private InputAction _nextWeaponAction;
@@ -22,6 +21,9 @@ namespace Player
 
         private void Awake()
         {
+            _animator = GetComponent<Animator>();
+            _playerCombat = GetComponent<PlayerCombat>();
+
             _nextWeaponAction = InputSystem.actions.FindAction("NextWeapon");
             _nextWeaponAction.performed += _ => NextWeapon();
             
@@ -29,9 +31,9 @@ namespace Player
             _prevWeaponAction.performed += _ => PrevWeapon();
         }
 
-        public WeaponBase CurrentWeaponPrefab => weapons[_currentWeapon];
-        public WeaponBase CurrentWeapon => _activeWeaponInstance;
-        
+        private WeaponBase CurrentWeaponPrefab => weapons[_currentWeapon];
+        public WeaponBase CurrentWeapon { get; private set; }
+
         private void Start()
         {
             DoAnimation();
@@ -39,7 +41,7 @@ namespace Player
         
         private void NextWeapon()
         {
-            if (_activelySwapping || playerCombat.Attacking) return;
+            if (_activelySwapping || _playerCombat.Attacking) return;
             _activelySwapping = true;
             _currentWeapon = (_currentWeapon == (weapons.Count-1)) ? 0 : _currentWeapon+1;
             DoAnimation();
@@ -47,7 +49,7 @@ namespace Player
 
         private void PrevWeapon()
         {
-            if (_activelySwapping || playerCombat.Attacking) return;
+            if (_activelySwapping || _playerCombat.Attacking) return;
             _activelySwapping = true;
             _currentWeapon = _currentWeapon == 0 ? weapons.Count-1 : _currentWeapon-1;
             DoAnimation();
@@ -55,32 +57,32 @@ namespace Player
 
         private void DoAnimation()
         {
-            if (animator != null)
+            if (_animator != null)
             {
-                animator.SetTrigger("SwapWeapon");
+                _animator.SetTrigger("SwapWeapon");
             }
         }
         
         public void EnableCurrentWeapon()
         {
             _activelySwapping = false;
-            if(_activeWeaponInstance?.gameObject != null) Destroy(_activeWeaponInstance.gameObject);
-            _activeWeaponInstance = Instantiate(CurrentWeaponPrefab, rightHand.transform);
-            _activeWeaponInstance.PositionInHands(rightHand, leftHand);
+            if(CurrentWeapon?.gameObject != null) Destroy(CurrentWeapon.gameObject);
+            CurrentWeapon = Instantiate(CurrentWeaponPrefab, rightHand.transform);
+            CurrentWeapon.PositionInHands(rightHand, leftHand);
             
             // set value in animator used to determine correct idle animation
             // base on CurrentWeapon.WeaponType
-            if (animator != null)
+            if (_animator != null)
             {
                 switch (CurrentWeapon.WeaponType)
                 {
                     case WeaponTypeEnum.TwoHanded:
-                        animator.SetFloat("WeaponType", 1.0f);
+                        _animator.SetFloat("WeaponType", 1.0f);
                         break;
                     case WeaponTypeEnum.OneHanded:
                     case WeaponTypeEnum.Unarmed:
                     default:
-                        animator.SetFloat("WeaponType", 0.0f);
+                        _animator.SetFloat("WeaponType", 0.0f);
                         break;
                 }
             }

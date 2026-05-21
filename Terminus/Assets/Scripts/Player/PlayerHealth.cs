@@ -16,8 +16,7 @@ namespace Player
         private static readonly int GotHitTrigger = Animator.StringToHash("gotHit");
 
         private PlayerMovement _playerMovement;
-
-        [SerializeField] private Animator animator;
+        private Animator _animator;
 
         [SerializeField] private int maxHealth = 25;
         private int _currentHealth;
@@ -28,6 +27,7 @@ namespace Player
         private void Awake()
         {
             _playerMovement = GetComponent<PlayerMovement>();
+            _animator = GetComponent<Animator>();
         }
 
         private void Start()
@@ -59,7 +59,7 @@ namespace Player
         {
             if (_currentHealth <= 0)
             {
-                animator.SetBool(IsDead, true);
+                _animator.SetBool(IsDead, true);
                 GetComponentInChildren<SceneSelectorMenu>().ShowMenu(true);
             }
         }
@@ -80,7 +80,7 @@ namespace Player
             {
                 case PainTypes.Hit:
                     {
-                        animator.SetTrigger(GotHitTrigger);
+                        _animator.SetTrigger(GotHitTrigger);
                         break;
                     }
             }
