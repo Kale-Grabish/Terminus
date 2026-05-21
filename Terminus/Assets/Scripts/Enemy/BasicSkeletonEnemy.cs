@@ -6,16 +6,6 @@ using UnityEngine.AI;
 
 namespace Enemy
 {
-    enum EnemyState
-    {
-        Idle,
-        Chase,
-        Attacking,
-        Dead,
-        Searching,
-        Cheering
-    }
-
     public class BasicSkeletonEnemy : MonoBehaviour, IDamageable
     {
         [SerializeField] private NavMeshAgent navMeshAgent;
