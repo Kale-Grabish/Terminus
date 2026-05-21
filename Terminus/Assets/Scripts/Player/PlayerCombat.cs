@@ -10,7 +10,7 @@ namespace Player
         private PlayerMovement _playerMovement;
         private PlayerInventory _playerInventory;
 
-        private Animator _animator;
+        [SerializeField] private Animator animator;
         public bool Attacking { get; set; }
         public WeaponBase CurrentWeapon => _playerInventory.CurrentWeapon; 
         
@@ -18,7 +18,6 @@ namespace Player
         private void Awake()
         {
             _attackAction = InputSystem.actions.FindAction("Attack");
-            _animator = GetComponent<Animator>();
             _playerMovement = GetComponent<PlayerMovement>();
             _playerInventory = GetComponent<PlayerInventory>();
             
@@ -39,9 +38,17 @@ namespace Player
         {
             if (!CanAttack()) return;
             Attacking = true;
-            if (_animator != null)
+            if (animator != null)
             {
-                _animator.SetTrigger("MakeMeleeAttack");
+                switch (CurrentWeapon.WeaponType)
+                {
+                    case WeaponTypeEnum.OneHanded:
+                        animator.SetTrigger("DoOneSwing");
+                        break;
+                    case WeaponTypeEnum.TwoHanded:
+                        animator.SetTrigger("DoTwoSwing");
+                        break;
+                }
             }
         }
     }

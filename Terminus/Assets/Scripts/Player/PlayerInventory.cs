@@ -7,7 +7,7 @@ namespace Player
 {
     public class PlayerInventory : MonoBehaviour
     {
-        private Animator _animator;
+        [SerializeField] private Animator animator;
         private PlayerCombat _playerCombat;
         [SerializeField] private List<WeaponBase> weapons;
         [SerializeField] private GameObject rightHand;
@@ -21,7 +21,6 @@ namespace Player
 
         private void Awake()
         {
-            _animator = GetComponent<Animator>();
             _playerCombat = GetComponent<PlayerCombat>();
 
             _nextWeaponAction = InputSystem.actions.FindAction("NextWeapon");
@@ -57,32 +56,36 @@ namespace Player
 
         private void DoAnimation()
         {
-            if (_animator != null)
-            {
-                _animator.SetTrigger("SwapWeapon");
-            }
+            // commented out until animation is redone
+            // the animation event is what should be calling EnableCurrentWeapon
+            
+            // if (_animator != null)
+            // {
+            //     _animator.SetTrigger("SwapWeapon");
+            // }
+            EnableCurrentWeapon();
         }
         
         public void EnableCurrentWeapon()
         {
             _activelySwapping = false;
             if(CurrentWeapon?.gameObject != null) Destroy(CurrentWeapon.gameObject);
-            CurrentWeapon = Instantiate(CurrentWeaponPrefab, rightHand.transform);
+            CurrentWeapon = Instantiate(CurrentWeaponPrefab, leftHand.transform);
             CurrentWeapon.PositionInHands(rightHand, leftHand);
             
             // set value in animator used to determine correct idle animation
             // base on CurrentWeapon.WeaponType
-            if (_animator != null)
+            if (animator != null)
             {
                 switch (CurrentWeapon.WeaponType)
                 {
                     case WeaponTypeEnum.TwoHanded:
-                        _animator.SetFloat("WeaponType", 1.0f);
+                        animator.SetFloat("WeaponType", 1.0f);
                         break;
                     case WeaponTypeEnum.OneHanded:
                     case WeaponTypeEnum.Unarmed:
                     default:
-                        _animator.SetFloat("WeaponType", 0.0f);
+                        animator.SetFloat("WeaponType", 0.0f);
                         break;
                 }
             }

@@ -13,10 +13,10 @@ namespace Player
     public class PlayerHealth : MonoBehaviour, IDamageable
     {
         private static readonly int IsDead = Animator.StringToHash("isDead");
-        private static readonly int GotHitTrigger = Animator.StringToHash("gotHit");
+        private static readonly int GotHitTrigger = Animator.StringToHash("Hit");
 
         private PlayerMovement _playerMovement;
-        private Animator _animator;
+        [SerializeField] private Animator animator;
 
         [SerializeField] private int maxHealth = 25;
         private int _currentHealth;
@@ -27,7 +27,6 @@ namespace Player
         private void Awake()
         {
             _playerMovement = GetComponent<PlayerMovement>();
-            _animator = GetComponent<Animator>();
         }
 
         private void Start()
@@ -59,7 +58,7 @@ namespace Player
         {
             if (_currentHealth <= 0)
             {
-                _animator.SetBool(IsDead, true);
+                animator.SetBool(IsDead, true);
                 GetComponentInChildren<SceneSelectorMenu>().ShowMenu(true);
             }
         }
@@ -80,7 +79,7 @@ namespace Player
             {
                 case PainTypes.Hit:
                     {
-                        _animator.SetTrigger(GotHitTrigger);
+                        animator.SetTrigger(GotHitTrigger);
                         break;
                     }
             }
