@@ -72,8 +72,8 @@ MonoBehaviour:
   weaponName: Bar Mace
   weaponType: 0
   painType: 0
-  startDamageFrame: 0.2
-  endDamageFrame: 0.4
+  startDamageFrame: 0.6
+  endDamageFrame: 0.9
   damageArea: {fileID: 9050543083692662536}
   impactEffect: {fileID: 6834177653421538552, guid: b2b6b5771a0dd8f4787401b5c621f05a, type: 3}
   rightHandGrip: {fileID: 0}

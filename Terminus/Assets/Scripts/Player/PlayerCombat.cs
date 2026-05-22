@@ -31,7 +31,14 @@ namespace Player
         
         public void ActivateDamage(bool activate)
         {
-            _playerInventory.CurrentWeapon.ActivateDamage(activate);            
+            CurrentWeapon.ActivateDamage(activate);
+        }
+
+        public void FinishAttack()
+        {
+            Attacking = false;
+            ActivateDamage(false);
+            CurrentWeapon.PoseForAttack(false);
         }
         
         private void StartAttack()
@@ -40,6 +47,7 @@ namespace Player
             Attacking = true;
             if (animator != null)
             {
+                CurrentWeapon.PoseForAttack(true);
                 switch (CurrentWeapon.WeaponType)
                 {
                     case WeaponTypeEnum.OneHanded:
