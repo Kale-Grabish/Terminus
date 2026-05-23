@@ -56,8 +56,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.342739, y: 2.8307374, z: 9.790989}
-  m_Center: {x: 0.0957464, y: 0.10765052, z: 11.854379}
+  m_Size: {x: 3.8438787, y: 2.8307374, z: 9.790989}
+  m_Center: {x: -0.5221548, y: 0.10765052, z: 11.854379}
 --- !u!114 &-1243387023413439020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,8 +74,8 @@ MonoBehaviour:
   weaponName: Hammer
   weaponType: 1
   painType: 0
-  startDamageFrame: 0.17
-  endDamageFrame: 0.49
+  startDamageFrame: 0.32
+  endDamageFrame: 0.7
   damageArea: {fileID: 9050543083692662536}
   impactEffect: {fileID: 6834177653421538552, guid: b2b6b5771a0dd8f4787401b5c621f05a, type: 3}
 --- !u!54 &8116410969207565015

@@ -189,9 +189,6 @@ namespace Enemy
 
         private void FacePlayer()
         {
-            // GameObject player = visionSensor.VisibleObjects.Find(go => go.CompareTag("Player"));
-            // if (!player) return;
-                
             // determine vector to the player
             var vectorToPlayer = _player.transform.position - transform.position;
             // rotate towards
