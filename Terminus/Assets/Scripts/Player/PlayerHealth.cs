@@ -13,10 +13,9 @@ namespace Player
     public class PlayerHealth : MonoBehaviour, IDamageable
     {
         private static readonly int IsDead = Animator.StringToHash("isDead");
-        private static readonly int GotHitTrigger = Animator.StringToHash("gotHit");
+        private static readonly int GotHitTrigger = Animator.StringToHash("Hit");
 
         private PlayerMovement _playerMovement;
-
         [SerializeField] private Animator animator;
 
         [SerializeField] private int maxHealth = 25;

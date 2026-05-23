@@ -70,6 +70,11 @@ namespace Weapons
                 }
             }
         }
+
+        public virtual void PoseForAttack(bool forAttack)
+        {
+            
+        }
         
     }
 }

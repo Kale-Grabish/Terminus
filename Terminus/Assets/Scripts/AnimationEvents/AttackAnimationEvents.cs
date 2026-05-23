@@ -32,8 +32,7 @@ namespace AnimationEvents
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             //set these here in case the animation is interrupted by something
-            _playerCombat.Attacking = false;
-            _playerCombat.ActivateDamage(false);
+            _playerCombat.FinishAttack();
         }
     }
 }

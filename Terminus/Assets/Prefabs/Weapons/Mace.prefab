@@ -29,8 +29,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 1.2, y: 1, z: 1.2}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2642901607566024230}
   m_Father: {fileID: 0}
@@ -54,8 +54,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.3, y: 1.26, z: 0.3}
-  m_Center: {x: 0, y: 0.25, z: 0}
+  m_Size: {x: 1.0602106, y: 3.8838468, z: 1.1350766}
+  m_Center: {x: -0.009238422, y: 0.38457608, z: 0.0033434033}
 --- !u!114 &9146257750408474057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,8 +72,8 @@ MonoBehaviour:
   weaponName: Bar Mace
   weaponType: 0
   painType: 0
-  startDamageFrame: 0.2
-  endDamageFrame: 0.4
+  startDamageFrame: 0.6
+  endDamageFrame: 0.9
   damageArea: {fileID: 9050543083692662536}
   impactEffect: {fileID: 6834177653421538552, guid: b2b6b5771a0dd8f4787401b5c621f05a, type: 3}
   rightHandGrip: {fileID: 0}
@@ -114,6 +114,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 8516672288916287883}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 231bec37e68d046089d9c782c1bff784, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 231bec37e68d046089d9c782c1bff784, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 231bec37e68d046089d9c782c1bff784, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 231bec37e68d046089d9c782c1bff784, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -152,6 +164,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 231bec37e68d046089d9c782c1bff784, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 231bec37e68d046089d9c782c1bff784, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 231bec37e68d046089d9c782c1bff784, type: 3}
       propertyPath: m_Name

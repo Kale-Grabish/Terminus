@@ -20,8 +20,8 @@ namespace Player
         private static readonly int IsFalling = Animator.StringToHash("isFalling");
         private static readonly int IsDodging = Animator.StringToHash("isDodging");
 
-        [SerializeField] private PlayerInput playerInput;
-        [SerializeField] private CharacterController characterController;
+        private PlayerInput playerInput;
+        private CharacterController characterController;
         [SerializeField] private Transform playerCameraTransform;
         
         [SerializeField] private Animator animator;
@@ -87,6 +87,8 @@ namespace Player
 
         private void Awake()
         {
+            playerInput = GetComponent<PlayerInput>();
+            characterController = GetComponent<CharacterController>();
             dodgeTimeRemaining = dodgeTime;
         }
 

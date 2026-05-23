@@ -7,28 +7,38 @@ namespace Player
     public class PlayerCombat : MonoBehaviour
     {
         private InputAction _attackAction;
-        [SerializeField] private PlayerMovement playerMovement;
-        [SerializeField] private PlayerInventory playerInventory;
+        private PlayerMovement _playerMovement;
+        private PlayerInventory _playerInventory;
 
         [SerializeField] private Animator animator;
         public bool Attacking { get; set; }
-        public WeaponBase CurrentWeapon => playerInventory.CurrentWeapon; 
+        public WeaponBase CurrentWeapon => _playerInventory.CurrentWeapon; 
         
         
         private void Awake()
         {
             _attackAction = InputSystem.actions.FindAction("Attack");
+            _playerMovement = GetComponent<PlayerMovement>();
+            _playerInventory = GetComponent<PlayerInventory>();
+            
             _attackAction.performed += _ => StartAttack();
         }
 
         private bool CanAttack()
         {
-            return !Attacking && playerMovement.CurrentMovementState != PlayerMovementStates.Dodge;
+            return !Attacking && _playerMovement.CurrentMovementState != PlayerMovementStates.Dodge;
         }
         
         public void ActivateDamage(bool activate)
         {
-            playerInventory.CurrentWeapon.ActivateDamage(activate);            
+            CurrentWeapon.ActivateDamage(activate);
+        }
+
+        public void FinishAttack()
+        {
+            Attacking = false;
+            ActivateDamage(false);
+            CurrentWeapon.PoseForAttack(false);
         }
         
         private void StartAttack()
@@ -37,7 +47,16 @@ namespace Player
             Attacking = true;
             if (animator != null)
             {
-                animator.SetTrigger("MakeMeleeAttack");
+                CurrentWeapon.PoseForAttack(true);
+                switch (CurrentWeapon.WeaponType)
+                {
+                    case WeaponTypeEnum.OneHanded:
+                        animator.SetTrigger("DoOneSwing");
+                        break;
+                    case WeaponTypeEnum.TwoHanded:
+                        animator.SetTrigger("DoTwoSwing");
+                        break;
+                }
             }
         }
     }
