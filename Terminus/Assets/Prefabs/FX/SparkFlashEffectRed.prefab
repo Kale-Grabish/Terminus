@@ -226,8 +226,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 0.39190942, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
+        key0: {r: 1, g: 0.07706064, b: 0.023584902, a: 1}
+        key1: {r: 1, g: 0.7263848, b: 0, a: 0.6901961}
         key2: {r: 0.9988424, g: 0.9520206, b: 0.87554824, a: 0}
         key3: {r: 1, g: 0.31764707, b: 0, a: 0}
         key4: {r: 1, g: 0.31764707, b: 0, a: 0}
@@ -5115,9 +5115,9 @@ ParticleSystem:
         m_RotationOrder: 4
     startColor:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 1
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 1, g: 0, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 0.31822503, b: 0, a: 1}
@@ -9799,7 +9799,7 @@ GameObject:
   - component: {fileID: 6834177653421538503}
   - component: {fileID: 2900031347992358120}
   m_Layer: 0
-  m_Name: SparkFlashEffect
+  m_Name: SparkFlashEffectRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -646,8 +646,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.3469806, y: 1.346981, z: 5.3599634}
-  m_Center: {x: -0.0000018453076, y: 0.0000025579916, z: -0.82246494}
+  m_Size: {x: 3.4362566, y: 2.0275214, z: 6.03}
+  m_Center: {x: 0.029282145, y: 0.050057676, z: 0.33999974}
 --- !u!114 &4155773104776245701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -660,9 +660,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56c71ae6afa94268b4c50a7919d411ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy.EnemyWeapon
-  attackDamage: 10
-  impactEffect: {fileID: 6834177653421538552, guid: b2b6b5771a0dd8f4787401b5c621f05a, type: 3}
+  attackDamage: 20
+  impactEffect: {fileID: 6834177653421538552, guid: e2282165cbe0e4f73a8e5d43ad3b6510, type: 3}
   painType: 0
-  startDamageFrame: 0.5
+  startDamageFrame: 0.7
   endDamageFrame: 1
   wielder: {fileID: 7169463449861083630}
