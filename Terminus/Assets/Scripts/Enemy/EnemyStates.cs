@@ -8,5 +8,6 @@ namespace Enemy
         Dead,
         Searching,
         Cheering,
+        ReturnHome
     }
 }
