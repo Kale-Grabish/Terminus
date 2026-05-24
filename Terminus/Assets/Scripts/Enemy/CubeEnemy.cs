@@ -1,5 +1,6 @@
 using Interfaces;
 using Player;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -17,7 +18,7 @@ namespace Enemy
         private PlayerHealth _playerHealth;
         [SerializeField] private EnemyState defaultState = EnemyState.Idle;
         [SerializeField] private int maxHealth = 50;
-        private VisionSensor  _visionSensor;
+        private VisionSensor _visionSensor;
         private PlayerProximityDetectorSensor _playerProximityDetectorSensor;
         private EnemyWeapon _weapon;
         private int _currentHealth;
@@ -29,6 +30,9 @@ namespace Enemy
 
         private float _timeOfPlayerDeath = 0.5f;
         private float _timeOfLastCheer = 0.5f;
+
+        private float _stunduration = 2.0f;
+        private float _timeOfStun;
 
         private void Awake()
         {
@@ -45,17 +49,18 @@ namespace Enemy
         {
             _currentState = defaultState;
             _currentHealth = maxHealth;
-            
+
         }
-    
+
         private void Update()
         {
             switch (_currentState)
             {
-                case EnemyState.Chase:  DoChase(); break;
+                case EnemyState.Chase: DoChase(); break;
                 case EnemyState.Attacking: DoAttacking(); break;
                 case EnemyState.Dead: DoDeath(); break;
                 case EnemyState.Cheering: DoCheer(); break;
+                case EnemyState.Stunned: DoStunned(); break;
                 case EnemyState.Idle:
                 default: DoIdle(); break;
             }
@@ -65,7 +70,7 @@ namespace Enemy
         {
             return _visionSensor.VisibleObjects.Exists(go => go.CompareTag("Player"));
         }
-        
+
         private bool AmNextToTarget()
         {
             if (!_navMeshAgent.isStopped)
@@ -83,12 +88,12 @@ namespace Enemy
             {
                 FacePlayer();
             }
-            
+
             if (CanSeePlayer() && !AmNextToTarget())
             {
                 _currentState = EnemyState.Chase;
             }
-            
+
             if (CanSeePlayer() && AmNextToTarget())
             {
                 _currentState = EnemyState.Attacking;
@@ -105,26 +110,26 @@ namespace Enemy
                 _currentState = EnemyState.Cheering;
             }
         }
-        
+
         private void DoChase()
         {
             // animator.SetFloat("Speed", 0.5f);
             _navMeshAgent.SetDestination(_player.gameObject.transform.position);
             _navMeshAgent.isStopped = false;
-            
+
             if (CanSeePlayer() && AmNextToTarget())
             {
                 _currentState = EnemyState.Attacking;
             }
             CheckForPlayerDeath();
         }
-        
+
         private void DoAttacking()
         {
             _navMeshAgent.isStopped = true;
             // animator.SetFloat("Speed", 0.0f);
             FacePlayer();
-            
+
             if (!AmNextToTarget())
             {
                 _currentState = EnemyState.Chase;
@@ -135,7 +140,7 @@ namespace Enemy
             {
                 // time send last attack ended > 2 seconds
                 _timeOfLastAttack = Time.time;
-                
+
                 _animator.SetTrigger(DoAttack);
             }
 
@@ -146,7 +151,7 @@ namespace Enemy
         {
             return Time.time - _timeOfLastAttack > attackDelaySeconds;
         }
-        
+
         private void DoDeath()
         {
             _navMeshAgent.isStopped = true;
@@ -156,19 +161,19 @@ namespace Enemy
         private void DoCheer()
         {
             _navMeshAgent.isStopped = true;
-            
+
             if (_timeOfLastCheer < 1 && ((Time.time - _timeOfPlayerDeath) > cheerDelaySeconds))
             {
                 _timeOfLastCheer = Time.time;
                 _animator.SetTrigger(DoDab);
             }
         }
-        
+
         public bool TakeDamage(int amount, PainTypes painType = PainTypes.Hit)
         {
             //if already dead: bail 
             if (!IsAlive()) return false;
-            
+
             _currentHealth -= amount;
             if (_currentHealth <= 0)
             {
@@ -192,8 +197,27 @@ namespace Enemy
             // determine vector to the player
             var vectorToPlayer = _player.transform.position - transform.position;
             // rotate towards
-            Vector3 newDirection = Vector3.RotateTowards(transform.forward, vectorToPlayer, Time.fixedDeltaTime/_turnSpeed, 0.0f);
+            Vector3 newDirection = Vector3.RotateTowards(transform.forward, vectorToPlayer, Time.fixedDeltaTime / _turnSpeed, 0.0f);
             transform.rotation = Quaternion.LookRotation(newDirection);
         }
+
+        public void Stun()
+        {
+            if (!IsAlive()) return;
+            _timeOfStun = Time.time;
+            _currentState = EnemyState.Stunned;
+            _navMeshAgent.isStopped = true;
+            _animator.SetTrigger(Hit);
+        }
+
+        private void DoStunned()
+        {
+            _navMeshAgent.isStopped = true;
+            if (Time.time - _timeOfStun >= _stunduration)
+            {
+                _currentState = EnemyState.Chase;
+            }
+        }
+
     }
 }

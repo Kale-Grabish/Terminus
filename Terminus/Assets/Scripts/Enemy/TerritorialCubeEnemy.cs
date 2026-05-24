@@ -36,6 +36,9 @@ namespace Enemy
         private float _timeOfPlayerDeath = 0.5f;
         private float _timeOfLastCheer = 0.5f;
 
+        private float _stunduration = 2.0f;
+        private float _timeOfStun;
+
         private void Awake()
         {
             _navMeshAgent = GetComponent<NavMeshAgent>();
@@ -64,6 +67,7 @@ namespace Enemy
                 case EnemyState.Dead: DoDeath(); break;
                 case EnemyState.Cheering: DoCheer(); break;
                 case EnemyState.ReturnHome: GoHome(); break;
+                case EnemyState.Stunned: DoStunned(); break;
                 case EnemyState.Idle:
                 case EnemyState.Searching:
                 default: DoIdle(); break;
@@ -251,6 +255,24 @@ namespace Enemy
         private bool PlayerInTerritory()
         {
             return Vector3.Distance(territory.transform.position, _player.transform.position) <= territoryRadius;
+        }
+
+        public void Stun()
+        {
+            if (!IsAlive()) return;
+            _timeOfStun = Time.time;
+            _currentState = EnemyState.Stunned;
+            _navMeshAgent.isStopped = true;
+            _animator.SetTrigger(Hit);
+        }
+
+        private void DoStunned()
+        {
+            _navMeshAgent.isStopped = true;
+            if (Time.time - _timeOfStun >= _stunduration)
+            {
+                _currentState = EnemyState.Chase;
+            }
         }
     }
 }

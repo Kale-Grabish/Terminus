@@ -85,4 +85,9 @@ public class Boomerang : MonoBehaviour
             isThrown = true;
         }
     }
+
+    public bool IsActive()
+    {
+        return isThrown || isReturning;
+    }
 }
