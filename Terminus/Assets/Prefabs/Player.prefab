@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1326747919864980137}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22361866, y: 0.14043075, z: -0.03257712, w: 0.9639568}
-  m_LocalPosition: {x: -0.9774892, y: 3.6799722, z: -3.28368}
+  m_LocalRotation: {x: 0.22361863, y: 0.1404308, z: -0.032577123, w: 0.9639568}
+  m_LocalPosition: {x: -0.97748923, y: 3.6799724, z: -3.2836814}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -585,7 +585,7 @@ Transform:
   m_GameObject: {fileID: 5760062026187029698}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.47, y: 0.79, z: -0.062}
+  m_LocalPosition: {x: 0.53499997, y: 0.79, z: -0.062}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -749,6 +749,8 @@ GameObject:
   - component: {fileID: 886706435620172157}
   - component: {fileID: 6371383651829770005}
   - component: {fileID: 7065807502706533849}
+  - component: {fileID: 918637793496884266}
+  - component: {fileID: 1100376753287160869}
   m_Layer: 0
   m_Name: Boomerang
   m_TagString: Untagged
@@ -765,7 +767,7 @@ Transform:
   m_GameObject: {fileID: 8145426271012940593}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.515, y: 0.967, z: -0.04}
+  m_LocalPosition: {x: 0.49, y: 0.967, z: -0.04}
   m_LocalScale: {x: 0.10728, y: 0.10728, z: 0.37460032}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -899,6 +901,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.PlayerInput
   playerControls: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+--- !u!114 &918637793496884266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8145426271012940593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37e6462d2d5064545a9a2b2ae4a045b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  boomerang: {fileID: 8171327193355534220}
+--- !u!54 &1100376753287160869
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8145426271012940593}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &8375993174562836139
 GameObject:
   m_ObjectHideFlags: 0
