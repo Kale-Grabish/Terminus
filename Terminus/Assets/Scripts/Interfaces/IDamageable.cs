@@ -6,5 +6,14 @@ namespace Interfaces
     {
         public bool TakeDamage(int amount, PainTypes painType = PainTypes.Hit);
         public bool IsAlive();
+
+        int CurrentHealth
+        {
+            get;
+        }
+        int MaxHealth
+        {
+            get;
+        }
     }
 }

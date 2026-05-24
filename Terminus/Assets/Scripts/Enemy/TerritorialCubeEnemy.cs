@@ -242,6 +242,10 @@ namespace Enemy
             return _currentHealth > 0;
         }
 
+        public int CurrentHealth => _currentHealth;
+
+        public int MaxHealth => maxHealth;
+
         private void FaceTarget(Transform target)
         {
             // determine vector to the target

@@ -157,6 +157,9 @@ namespace Enemy
             return _currentHealth > 0;
         }
 
+        public int CurrentHealth => _currentHealth;
+        public int MaxHealth => maxHealth;
+
         private void FacePlayer()
         {
             GameObject player = visionSensor.VisibleObjects.Find(go => go.CompareTag("Player"));

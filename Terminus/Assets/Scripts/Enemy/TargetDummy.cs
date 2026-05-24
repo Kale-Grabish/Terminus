@@ -21,5 +21,8 @@ namespace Enemy
         {
             return true;
         }
+
+        public int CurrentHealth => 0;
+        public int MaxHealth => 0;
     }
 }
