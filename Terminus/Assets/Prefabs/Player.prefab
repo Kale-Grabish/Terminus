@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 521724090663786825}
   - component: {fileID: 7560756386367438966}
   - component: {fileID: 1814450075515955143}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MainCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 6053983021282761048}
   - component: {fileID: 2279010184614316074}
   - component: {fileID: 8171327193355534220}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -426,7 +426,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7241493612774536452}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -460,7 +460,7 @@ GameObject:
   - component: {fileID: 2409039333204960219}
   - component: {fileID: 8032292907051154805}
   - component: {fileID: 4941211106256677088}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -569,7 +569,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2256667313850701545}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BoomerangPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -600,7 +600,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6833624587209814654}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CameraLookAtPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -634,7 +634,7 @@ GameObject:
   - component: {fileID: 8943821302380419383}
   - component: {fileID: 5429406835759276920}
   - component: {fileID: 3469650057298703882}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -751,7 +751,7 @@ GameObject:
   - component: {fileID: 7065807502706533849}
   - component: {fileID: 918637793496884266}
   - component: {fileID: 1100376753287160869}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Boomerang
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -955,7 +955,7 @@ GameObject:
   - component: {fileID: 8199844410195022483}
   - component: {fileID: 8223116996232108243}
   - component: {fileID: 4475419622994431541}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CinemachineControls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1212,7 +1212,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4944233133923565688}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1286,6 +1286,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerHUD
       objectReference: {fileID: 0}
+    - target: {fileID: 4576208529766158388, guid: 8fd81bbbb38644db4ad73a52a1f2dd49, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8399684424821425015, guid: 8fd81bbbb38644db4ad73a52a1f2dd49, type: 3}
       propertyPath: playerPower
       value: 
@@ -1352,9 +1356,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7275803327936352283, guid: e37d81b4106c90267ae23a00b5536929, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -7063088818894641790, guid: e37d81b4106c90267ae23a00b5536929, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -5578710521328771973, guid: e37d81b4106c90267ae23a00b5536929, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -4713342220655766214, guid: e37d81b4106c90267ae23a00b5536929, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -129786778469443355, guid: e37d81b4106c90267ae23a00b5536929, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 434956292334849427, guid: e37d81b4106c90267ae23a00b5536929, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e37d81b4106c90267ae23a00b5536929, type: 3}
       propertyPath: m_Name
       value: CubeReed
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e37d81b4106c90267ae23a00b5536929, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: e37d81b4106c90267ae23a00b5536929, type: 3}
       propertyPath: m_Controller
@@ -1363,6 +1395,18 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: e37d81b4106c90267ae23a00b5536929, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771041998497112093, guid: e37d81b4106c90267ae23a00b5536929, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7036213049465896255, guid: e37d81b4106c90267ae23a00b5536929, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8982257621501138843, guid: e37d81b4106c90267ae23a00b5536929, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1462,6 +1506,10 @@ PrefabInstance:
     - target: {fileID: 7401388395659812929, guid: 52589ad2992bb456eabd5a01eeb78c2c, type: 3}
       propertyPath: m_Name
       value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7401388395659812929, guid: 52589ad2992bb456eabd5a01eeb78c2c, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
