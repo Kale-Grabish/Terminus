@@ -20,6 +20,11 @@ public class Boomerang : MonoBehaviour
     [SerializeField] private Player.PlayerInput playerInput;
     [SerializeField] Camera playerCamera;
 
+    private float throwProgress = 0f;
+    private Vector3 throwStartPosition;
+    private Vector3 throwRight;
+    [SerializeField] float arcHeight = 3f;
+
 
     // Update is called once per frame
     void Update()
@@ -33,28 +38,39 @@ public class Boomerang : MonoBehaviour
 
         if (isThrown)
         {
-            Vector3 newPos = Vector3.MoveTowards(boomerang.transform.position, throwPosition, throwSpeed * Time.deltaTime);
-            boomerang.transform.position = newPos;
-            boomerang.GetComponent<MeshCollider>().enabled = true; 
+            throwProgress += throwSpeed * Time.deltaTime / Vector3.Distance(throwStartPosition, throwPosition);
+            throwProgress = Mathf.Clamp01(throwProgress);
 
-            //if the boomerangs position is equal to the throw position
-            if(boomerang.transform.position == throwPosition)
+            // Base straight line position
+            Vector3 straightPos = Vector3.Lerp(throwStartPosition, throwPosition, throwProgress);
+
+            // Sine offset peaks in the middle, zero at start and end
+            float sineOffset = Mathf.Sin(throwProgress * Mathf.PI) * arcHeight;
+            boomerang.transform.position = straightPos + throwRight * sineOffset;
+
+            boomerang.GetComponent<MeshCollider>().enabled = true;
+
+            if (throwProgress >= 1f)
             {
                 isThrown = false;
                 isReturning = true;
+                throwProgress = 0f;
             }
         }
 
         if (isReturning)
         {
-            //Set the new position back to the boomerangs original postion
-            Vector3 newPos = Vector3.MoveTowards(boomerang.transform.position, boomerangLocation.position, throwSpeed * Time.deltaTime);
-            boomerang.transform.position = newPos;
+            throwProgress += throwSpeed * Time.deltaTime / Vector3.Distance(throwPosition, boomerangLocation.position);
+            throwProgress = Mathf.Clamp01(throwProgress);
 
-            //if Boomerangs original position is equal to original location
+            Vector3 straightPos = Vector3.Lerp(throwPosition, boomerangLocation.position, throwProgress);
+
+            // Negative sineOffset flips the arc to the opposite side on return
+            float sineOffset = Mathf.Sin(throwProgress * Mathf.PI) * arcHeight;
+            boomerang.transform.position = straightPos + -throwRight * sineOffset;
+
             if (boomerang.transform.position == boomerangLocation.position)
             {
-                //Set isReturning to false, turn off the rotator, set parent and rotation
                 isReturning = false;
                 rotator.enabled = false;
                 boomerang.transform.parent = boomerangLocation;
@@ -67,15 +83,16 @@ public class Boomerang : MonoBehaviour
     {
         RaycastHit hit;
 
-        
-        if (Physics.Raycast(boomerangLocation.transform.position, playerCamera.transform.forward, out hit, boomerangDistance,layerMask))
+        if (Physics.Raycast(boomerangLocation.transform.position, playerCamera.transform.forward, out hit, boomerangDistance, layerMask))
         {
             throwPosition = hit.point;
             boomerang.transform.parent = null;
             rotator.enabled = true;
             isThrown = true;
+            throwProgress = 0f;
+            throwStartPosition = boomerang.transform.position;
+            throwRight = Vector3.Cross((throwPosition - throwStartPosition).normalized, Vector3.up);
         }
-
         else
         {
             throwPosition = boomerangLocation.position + playerCamera.transform.forward * boomerangDistance;
@@ -83,6 +100,9 @@ public class Boomerang : MonoBehaviour
             returnPosition = boomerangLocation.position;
             rotator.enabled = true;
             isThrown = true;
+            throwProgress = 0f;
+            throwStartPosition = boomerang.transform.position;
+            throwRight = Vector3.Cross((throwPosition - throwStartPosition).normalized, Vector3.up);
         }
     }
 
