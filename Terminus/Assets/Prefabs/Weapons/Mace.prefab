@@ -68,7 +68,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96bd05f21f06476a9acd0badd1e26d37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Weapons.BarMaceWeapon
-  attackDamage: 10
+  attackDamage: 15
+  regenPerSec: 5
   weaponName: Bar Mace
   weaponType: 0
   painType: 0

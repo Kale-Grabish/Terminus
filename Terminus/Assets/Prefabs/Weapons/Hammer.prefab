@@ -70,7 +70,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2361c19cefbe4e5f99e7b7c1d0da6143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Weapons.HammerWeapon
-  attackDamage: 20
+  attackDamage: 50
+  regenPerSec: 1.5
   weaponName: Hammer
   weaponType: 1
   painType: 0

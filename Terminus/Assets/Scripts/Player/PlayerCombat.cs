@@ -9,7 +9,10 @@ namespace Player
         private InputAction _attackAction;
         private PlayerMovement _playerMovement;
         private PlayerInventory _playerInventory;
+        private PlayerPower _playerPower;
 
+        private float _powerDrawn;
+        
         [SerializeField] private Animator animator;
         public bool Attacking { get; private set; }
         public WeaponBase CurrentWeapon => _playerInventory.CurrentWeapon; 
@@ -20,6 +23,7 @@ namespace Player
             _attackAction = InputSystem.actions.FindAction("Attack");
             _playerMovement = GetComponent<PlayerMovement>();
             _playerInventory = GetComponent<PlayerInventory>();
+            _playerPower = GetComponent<PlayerPower>();
             
             _attackAction.performed += _ => StartAttack();
         }
@@ -31,12 +35,13 @@ namespace Player
         
         public void ActivateDamage(bool activate)
         {
-            CurrentWeapon.ActivateDamage(activate);
+            CurrentWeapon.ActivateDamage(activate, _powerDrawn);
         }
 
         public void FinishAttack()
         {
             Attacking = false;
+            _powerDrawn = 0;
             ActivateDamage(false);
             CurrentWeapon.PoseForAttack(false);
         }
@@ -45,6 +50,10 @@ namespace Player
         {
             if (!CanAttack()) return;
             Attacking = true;
+            
+            // we store the powerDrawn value so it can be passed in via ActivateDamage
+            _powerDrawn = _playerPower.DrawUponPower(CurrentWeapon.RegenPerSec);
+            
             if (animator != null)
             {
                 CurrentWeapon.PoseForAttack(true);

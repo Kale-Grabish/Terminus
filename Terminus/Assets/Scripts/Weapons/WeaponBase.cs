@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Enemy;
 using Interfaces;
@@ -15,6 +16,7 @@ namespace Weapons
     public class WeaponBase : MonoBehaviour
     {
         [SerializeField] protected int attackDamage = 2;
+        [SerializeField] protected float regenPerSec = 1.0f;
         [SerializeField] protected string weaponName = "unnamed";
         [SerializeField] protected WeaponTypeEnum weaponType;
         [SerializeField] protected PainTypes painType;
@@ -22,6 +24,10 @@ namespace Weapons
         [SerializeField] protected float endDamageFrame;
         [SerializeField] protected BoxCollider damageArea;
         [SerializeField] protected GameObject impactEffect;
+        
+        private float _damageMod;
+        
+        public float RegenPerSec => regenPerSec;
         
         public float StartDamageFrame => startDamageFrame;
         public float EndDamageFrame => endDamageFrame;
@@ -54,16 +60,19 @@ namespace Weapons
             damageArea.enabled = false;
         }
 
-        public virtual void ActivateDamage(bool activate)
+        public virtual void ActivateDamage(bool activate, float power = 0)
         {
             damageArea.enabled = activate;
+            _damageMod = activate? power: 0; //if damage is being turned off set power to 0
+
         }
 
         protected virtual void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Damageable"))
             {
-                bool didHurt = other.GetComponent<IDamageable>().TakeDamage(attackDamage, painType);
+                int damage = (int)Math.Floor(attackDamage*_damageMod);
+                bool didHurt = other.GetComponent<IDamageable>().TakeDamage(damage, painType);
                 if (didHurt && impactEffect)
                 {
                     Instantiate(impactEffect, transform.position, transform.rotation);
