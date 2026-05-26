@@ -439,7 +439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy.TerritorialCubeEnemy
   defaultState: 0
-  maxHealth: 50
+  maxHealth: 100
   attackDelaySeconds: 2
   cheerDelaySeconds: 1
   territory: {fileID: 0}

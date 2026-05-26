@@ -363,7 +363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy.CubeEnemy
   defaultState: 0
-  maxHealth: 50
+  maxHealth: 100
   attackDelaySeconds: 2
   cheerDelaySeconds: 1
 --- !u!114 &23312624038483514
