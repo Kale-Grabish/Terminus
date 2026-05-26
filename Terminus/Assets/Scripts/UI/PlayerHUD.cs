@@ -11,20 +11,27 @@ namespace UI
         [SerializeField] private PlayerPower playerPower;
     
         private VisualElement _rootVe;
-        private Label _healthLabel;
-        private Label _powerLabel;
-        void Start()
+        
+        private ProgressBar _healthBar;
+        private ProgressBar _powerBar;
+
+        private void Start()
         {
             _rootVe = GetComponent<UIDocument>().rootVisualElement;
-            _healthLabel = _rootVe.Q<Label>("healthLabel");
-            _powerLabel = _rootVe.Q<Label>("powerLabel");
+            _healthBar = _rootVe.Q<ProgressBar>("healthBar");
+            _powerBar = _rootVe.Q<ProgressBar>("powerBar");
         }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
-            _healthLabel.text = playerHealth.CurrentHealth.ToString();
-            _powerLabel.text = playerPower.CurrentPower.ToString();
+            _healthBar.value = playerHealth.CurrentHealth;
+            _healthBar.highValue = playerHealth.MaxHealth;
+            _healthBar.lowValue = 0;
+            
+            _powerBar.value = playerPower.CurrentPower;
+            _powerBar.highValue = playerPower.MaxPower;
+            _powerBar.lowValue = 0;
         }
     }
 }
