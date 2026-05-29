@@ -25,7 +25,8 @@ namespace Player
         [SerializeField] private Transform playerCameraTransform;
         
         [SerializeField] private Animator animator;
-        
+        private PlayerCombat _playerCombat;
+
         [field: Header("Turning")]
         [SerializeField] private float turnSmoothing = 0.1f;
         [SerializeField] private float turnSmoothVelocity;
@@ -89,6 +90,7 @@ namespace Player
         {
             playerInput = GetComponent<PlayerInput>();
             characterController = GetComponent<CharacterController>();
+            _playerCombat = GetComponent<PlayerCombat>();
             dodgeTimeRemaining = dodgeTime;
         }
 
@@ -222,7 +224,12 @@ namespace Player
             // handles turning and moving/rotating the character model
             float targetAngle = Mathf.Atan2(playerInput.MoveVector.x, playerInput.MoveVector.y) * Mathf.Rad2Deg + playerCameraTransform.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothing);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+            // don't rotate the character if they are attacking
+            if (!_playerCombat.Attacking)
+            {
+                transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            }
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             moveDir = Vector3.ProjectOnPlane(moveDir, groundNormal); // Aligns movement to the normal of the slope, normal comes from SphereCast in GroundedCheck().

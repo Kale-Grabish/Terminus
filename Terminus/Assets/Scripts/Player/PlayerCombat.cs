@@ -11,7 +11,7 @@ namespace Player
         private PlayerInventory _playerInventory;
 
         [SerializeField] private Animator animator;
-        public bool Attacking { get; set; }
+        public bool Attacking { get; private set; }
         public WeaponBase CurrentWeapon => _playerInventory.CurrentWeapon; 
         
         
