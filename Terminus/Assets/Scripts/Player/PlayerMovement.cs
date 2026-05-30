@@ -208,7 +208,7 @@ namespace Player
             }
 
             // if the values are this low we are standing still so dodge backwards
-            if (dodgeDirection.x <= 0.5 && dodgeDirection.z <= 0.5)
+            if (Mathf.Abs(dodgeDirection.x) <= 0.5 && Mathf.Abs(dodgeDirection.z) <= 0.5)
             {
                 dodgeDirection = -transform.forward;
             }
