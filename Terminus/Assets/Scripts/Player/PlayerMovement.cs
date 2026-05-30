@@ -82,8 +82,10 @@ namespace Player
             Grounded = Time.time - lastGroundedTime <= coyoteTimer;
         }
         private void DodgeCheck()
-        {
-            canDodge = dodgeReadyTimer <= Time.time; // dodgeReadyTimer will be Time.time + dodgeCooldown when dodge ends, compare until dodgeCooldown time has passed.
+        {   
+            // can't attack if dodging
+            // dodgeReadyTimer will be Time.time + dodgeCooldown when dodge ends, compare until dodgeCooldown time has passed.
+            canDodge = !_playerCombat.Attacking && dodgeReadyTimer <= Time.time; 
         }
 
         private void Awake()
@@ -205,7 +207,12 @@ namespace Player
                 dodgeDirection = GetMoveDir();
             }
 
-
+            // if the values are this low we are standing still so dodge backwards
+            if (dodgeDirection.x <= 0.5 && dodgeDirection.z <= 0.5)
+            {
+                dodgeDirection = -transform.forward;
+            }
+            
             characterController.Move(dodgeDirection.normalized * (dodgeDistance * Time.deltaTime));
         }
 
