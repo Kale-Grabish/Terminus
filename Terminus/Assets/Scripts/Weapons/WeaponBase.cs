@@ -71,7 +71,10 @@ namespace Weapons
         {
             if (other.CompareTag("Damageable"))
             {
-                int damage = (int)Math.Floor(attackDamage*_damageMod);
+                // by default weapons always do at least 10% of their damage regardless of the passed
+                // modifier
+                
+                int damage = (int)Math.Floor(attackDamage*Mathf.Clamp(_damageMod, 0.1f, 1f));
                 bool didHurt = other.GetComponent<IDamageable>().TakeDamage(damage, painType);
                 if (didHurt && impactEffect)
                 {
