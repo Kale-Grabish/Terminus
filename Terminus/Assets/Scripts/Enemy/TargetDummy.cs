@@ -6,13 +6,14 @@ namespace Enemy
 {
     public class TargetDummy : MonoBehaviour, IDamageable
     {
+        private static readonly int GotHit = Animator.StringToHash("GotHit");
         [SerializeField] private Animator animator;
         
         public bool TakeDamage(int damage, PainTypes painType = PainTypes.Hit)
         {
             if (animator)
             {
-                animator.SetTrigger("GotHit");
+                animator.SetTrigger(GotHit);
             }
             return true;
         }
