@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Weapons.BarMaceWeapon
   attackDamage: 15
-  regenPerSec: 5
+  regenPerSec: 25
   weaponName: Bar Mace
   weaponType: 0
   painType: 0

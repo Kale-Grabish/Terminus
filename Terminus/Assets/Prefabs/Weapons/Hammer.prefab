@@ -71,7 +71,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Weapons.HammerWeapon
   attackDamage: 50
-  regenPerSec: 1.5
+  regenPerSec: 2
   weaponName: Hammer
   weaponType: 1
   painType: 0
