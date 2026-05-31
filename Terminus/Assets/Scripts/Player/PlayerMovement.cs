@@ -58,7 +58,10 @@ namespace Player
         [SerializeField] private float dodgeGravityModifier;
         [SerializeField] public bool isImmune;
         private float dodgeReadyTimer = 0.01f; // Keep at 0, makes a timestamp for dodge cooldown.
-
+        
+        [field: Header("Dodge Back")]
+        [SerializeField]private float dodgeBackDistance = 2.25f;
+        
         private const float Gravity = 9.81f;
 
         private void GroundedCheck()
@@ -185,7 +188,7 @@ namespace Player
                 animator.SetTrigger("Dodge");
             }
         }
-
+        
         private void Dodge()
         {
             dodgeTimeRemaining -= Time.deltaTime;
@@ -202,18 +205,18 @@ namespace Player
                 return;
             }
 
+            // if no dodge direction then this is the first frame of this dodge
+            // so we need to determine it.  
             if (dodgeDirection == Vector3.zero)
             {
-                dodgeDirection = GetMoveDir();
-            }
-
-            // if the values are this low we are standing still so dodge backwards
-            if (Mathf.Abs(dodgeDirection.x) <= 0.5 && Mathf.Abs(dodgeDirection.z) <= 0.5)
-            {
-                dodgeDirection = -transform.forward;
+                // if there is no movement input from the player then we dodge backwards
+                dodgeDirection = playerInput.MoveVector == Vector2.zero ? -transform.forward : GetMoveDir();
             }
             
-            characterController.Move(dodgeDirection.normalized * (dodgeDistance * Time.deltaTime));
+            // if we are dodging backwards then only dodge the dodgeBackDistance instead of dodgeDistance
+            float distance = dodgeDirection == -transform.forward? dodgeBackDistance : dodgeDistance;
+            
+            characterController.Move(dodgeDirection.normalized * (distance * Time.deltaTime));
         }
 
         /**
