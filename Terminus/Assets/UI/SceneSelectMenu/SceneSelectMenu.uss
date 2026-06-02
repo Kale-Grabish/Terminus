@@ -3,7 +3,7 @@
 }
 
 #menuUIRoot.hideme {
-    left: -323px;
+    left: -423px;
     transition-property: left;
     transition-duration: 0.5s;
 }
@@ -25,11 +25,11 @@
     top: auto;
     bottom: auto;
     justify-content: space-between;
-    background-color: rgba(26, 26, 26, 0.61);
+    background-color: rgba(24, 32, 37, 0.97);
     flex-wrap: wrap;
     flex-shrink: initial;
     flex-basis: auto;
-    padding: 20px 10px;
+    padding: 50px 10px;
     align-self: stretch;
     align-items: center;
     background-size: 1000px 100%;
@@ -38,10 +38,11 @@
 .MenuTitle {
     align-items: auto;
     align-self: center;
+    margin-top: 200px;
     font-size: 48px;
     -unity-font-style: bold;
     -unity-font-definition: resource("FlatSkin/Font/Roboto-Medium");
-    margin-top: 5%;
+    width: 200px;
     background-color: rgba(0, 0, 0, 0);
     color: rgb(255, 255, 255);
 }
