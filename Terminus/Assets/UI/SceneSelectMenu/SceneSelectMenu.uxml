@@ -2,8 +2,7 @@
     <Style src="project://database/Assets/UI/SceneSelectMenu/SceneSelectMenu.uss?fileID=7433441132597879392&amp;guid=0a532c85e4e0f48328a14be572ebdf86&amp;type=3#SceneSelectMenu"/>
     <ui:VisualElement name="menuUIRoot" class="MenuUI">
         <ui:VisualElement name="" class="MenuPanel">
-            <ui:Image source="project://database/Assets/Textures/UI/logotype.png?fileID=2800000&amp;guid=cdc89561a05b0189bb7e31864c969ce9&amp;type=3#logotype" 
-                      scale-mode="ScaleToFit" uv="0,0,1,1" style="height: 67px; width: 334px; align-self: center;"/>
+            <ui:Image source="project://database/Assets/Textures/UI/logotype.png?fileID=2800000&amp;guid=c3a09201acd03ce49837f75e7bd5e1e6&amp;type=3#logotype" scale-mode="ScaleToFit" uv="0,0,1,1" style="height: 100px; width: 334px; align-self: center;"/>
             <ui:GroupBox name="ButtonGroup" class="ButtonGroup"/>
             <ui:Button text="Exit Game" name="ExitButton" class="ExitButton"/>
         </ui:VisualElement>
